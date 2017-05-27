@@ -16,19 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2017-05-26
  */
 @RestController
-@RequestMapping("/sysUser")
 public class SysUserController {
     @Autowired
     private SysUserServiceImpl sysUserService;
 
-    @RequestMapping("/getUser")
+    @RequestMapping(value="/api/getUser")
     public String getUser() {
         Page<SysUser> sysUserPage = sysUserService.selectPage(new Page<>(0, 3));
         System.out.println(sysUserPage.getRecords());
         return sysUserPage.getRecords().toString();
     }
 
-    @RequestMapping("/test")
+    @RequestMapping(value="/api/test")
     public String test() {
         System.out.println("hello world");
         return "hello world";

@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit-version>4.12</junit-version>
     <velocity.version>1.7</velocity.version>
-
+    <jjwt.version>0.7.0</jjwt.version>
 
     <mybatis-spring-boot-version>1.3.0</mybatis-spring-boot-version>
     <mybatis-plus-version>2.0.8</mybatis-plus-version>
@@ -46,8 +46,19 @@
     </dependency>
 
 
-
-
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.mobile</groupId>
+      <artifactId>spring-mobile-device</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
