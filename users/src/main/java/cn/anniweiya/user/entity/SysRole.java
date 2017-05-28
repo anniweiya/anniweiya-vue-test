@@ -1,12 +1,13 @@
 package cn.anniweiya.user.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -104,4 +105,17 @@ public class SysRole extends Model<SysRole> {
 		return this.fid;
 	}
 
+	@Override
+	public String toString() {
+		return "SysRole{" +
+			   "fid=" + fid +
+			   ", frole='" + frole + '\'' +
+			   ", fupdateTime=" + fupdateTime +
+			   ", fupdator='" + fupdator + '\'' +
+			   ", fcreateTime=" + fcreateTime +
+			   ", fcreator='" + fcreator + '\'' +
+			   ", fisDelete=" + fisDelete +
+			   ", fext='" + fext + '\'' +
+			   '}';
+	}
 }

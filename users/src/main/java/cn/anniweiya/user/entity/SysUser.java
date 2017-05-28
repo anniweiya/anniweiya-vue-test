@@ -75,8 +75,11 @@ public class SysUser extends Model<SysUser> {
 		this.flastpasswordResetDate = flastpasswordResetDate;
 	}
 
-	public Integer getFenabled() {
-		return fenabled;
+//	public Integer getFenabled() {
+//		return fenabled;
+//	}
+	public Boolean getFenabled() {
+		return fenabled != null && fenabled == 1;
 	}
 
 	public void setFenabled(Integer fenabled) {
@@ -160,4 +163,23 @@ public class SysUser extends Model<SysUser> {
 		return this.fid;
 	}
 
+	@Override
+	public String toString() {
+		return "SysUser{" +
+			   "fid=" + fid +
+			   ", fusername='" + fusername + '\'' +
+			   ", fpassword='" + fpassword + '\'' +
+			   ", flastpasswordResetDate=" + flastpasswordResetDate +
+			   ", fenabled=" + fenabled +
+			   ", femail='" + femail + '\'' +
+			   ", flastname='" + flastname + '\'' +
+			   ", ffirstname='" + ffirstname + '\'' +
+			   ", fcreator=" + fcreator +
+			   ", fcreateTime=" + fcreateTime +
+			   ", fupdator='" + fupdator + '\'' +
+			   ", fupdateTime=" + fupdateTime +
+			   ", fisDelete=" + fisDelete +
+			   ", fext='" + fext + '\'' +
+			   '}';
+	}
 }

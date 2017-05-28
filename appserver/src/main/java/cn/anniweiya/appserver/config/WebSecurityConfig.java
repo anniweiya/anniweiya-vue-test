@@ -49,11 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-
-
                 // we don't need CSRF because our token is invulnerable
                 .csrf()
-//                .and()
                 .disable()
 
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -62,25 +59,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
-                .antMatchers("/auth**").permitAll()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
+                .antMatchers("/auth/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .anyRequest().authenticated();
 
-                // allow anonymous resource requests
-//                .antMatchers(
-//                        HttpMethod.GET,
-//                        "/",
-//                        "/*.html",
-//                        "/favicon.ico",
-//                        "/**/*.html",
-//                        "/**/*.css",
-//                        "/**/*.js"
-//                ).permitAll()
-
-//                .anyRequest().authenticated();
 
         // Custom JWT based security filter
         httpSecurity
-//                .addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
         // disable page caching

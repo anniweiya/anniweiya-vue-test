@@ -67,14 +67,4 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return multipartResolver;
     }
 
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**")
-//                .allowedOrigins("*")
-//                .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH")
-//                .allowedHeaders("X-Requested-With", "Content-Type", "Accept", "Authorization")
-//                .allowCredentials(true)
-//                .maxAge(3600);
-//    }
-
 }

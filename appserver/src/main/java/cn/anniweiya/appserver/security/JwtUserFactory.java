@@ -1,18 +1,19 @@
 package cn.anniweiya.appserver.security;
 
+import cn.anniweiya.user.entity.SysRole;
 import cn.anniweiya.user.entity.SysUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class JwtUserFactory {
 
     private JwtUserFactory() {
     }
 
-    public static JwtUser create(SysUser user) {
+    public static JwtUser create(SysUser user, List<SysRole> roleList) {
         return new JwtUser(
                 user.getFid().longValue(),
                 user.getFusername(),
@@ -20,18 +21,15 @@ public final class JwtUserFactory {
                 user.getFlastname(),
                 user.getFemail(),
                 user.getFpassword(),
-                mapToGrantedAuthorities(user),
-//                user.getFenabled(),
-                true,
+                mapToGrantedAuthorities(roleList),
+                user.getFenabled(),
                 user.getFlastpasswordResetDate()
         );
     }
 
-    private static List<GrantedAuthority> mapToGrantedAuthorities(SysUser authorities) {
-
-        return Arrays.asList(new SimpleGrantedAuthority("admin"));
-//        return authorities.stream()
-//                .map(authority -> new SimpleGrantedAuthority(authority.getName().name()))
-//                .collect(Collectors.toList());
+    private static List<GrantedAuthority> mapToGrantedAuthorities(List<SysRole>  authorities) {
+        return authorities.stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getFrole()))
+                .collect(Collectors.toList());
     }
 }
