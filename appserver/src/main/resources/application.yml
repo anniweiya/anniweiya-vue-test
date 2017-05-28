@@ -28,12 +28,11 @@ logging:
 #      web: ERROR
 
 jwt:
-  token:
-    header: X-Auth-Token
-    secret: mySecret
-    expiration: 604800
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
 
-api:
-  jwt:
-    path: /auth
-    refresh: /refresh

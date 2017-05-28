@@ -1,6 +1,6 @@
 package cn.anniweiya.user.service;
 
-import cn.anniweiya.user.entity.SysUser;
+import cn.anniweiya.user.entity.SysUserRole;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author anniweiya
  * @since 2017-05-27
  */
-public interface ISysUserService extends IService<SysUser> {
+public interface ISysUserRoleService extends IService<SysUserRole> {
 	
 }

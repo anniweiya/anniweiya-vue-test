@@ -1,6 +1,6 @@
 package cn.anniweiya.user.mapper;
 
-import cn.anniweiya.user.entity.SysUser;
+import cn.anniweiya.user.entity.SysUserRole;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author anniweiya
  * @since 2017-05-27
  */
-public interface SysUserMapper extends BaseMapper<SysUser> {
+public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
 
 }

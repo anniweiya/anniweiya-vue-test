@@ -18,7 +18,7 @@ public class MybatisPlusGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("anniweiyaback/users/src/main/java");
+        gc.setOutputDir("/ianbase/workspace/ianwork/java/spring-vue/anniweiyaback/users/src/main/java");
         gc.setFileOverride(true);
         gc.setActiveRecord(true);// 开启 activeRecord 模式
         gc.setEnableCache(false);// XML 二级缓存

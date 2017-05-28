@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.anniweiya.user.mapper.SysRoleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="cn.anniweiya.user.entity.SysRole">
+		<id column="fid" property="fid" />
+		<result column="frole" property="frole" />
+		<result column="fupdate_time" property="fupdateTime" />
+		<result column="fupdator" property="fupdator" />
+		<result column="fcreate_time" property="fcreateTime" />
+		<result column="fcreator" property="fcreator" />
+		<result column="fis_delete" property="fisDelete" />
+		<result column="fext" property="fext" />
+	</resultMap>
+
+</mapper>

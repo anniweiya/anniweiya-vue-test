@@ -5,8 +5,18 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="cn.anniweiya.user.entity.SysUser">
 		<id column="fid" property="fid" />
-		<result column="fname" property="fname" />
+		<result column="fusername" property="fusername" />
 		<result column="fpassword" property="fpassword" />
+		<result column="flastpassword_reset_date" property="flastpasswordResetDate" />
+		<result column="fenabled" property="fenabled" />
+		<result column="femail" property="femail" />
+		<result column="flastname" property="flastname" />
+		<result column="ffirstname" property="ffirstname" />
+		<result column="fcreator" property="fcreator" />
+		<result column="fcreate_time" property="fcreateTime" />
+		<result column="fupdator" property="fupdator" />
+		<result column="fupdate_time" property="fupdateTime" />
+		<result column="fis_delete" property="fisDelete" />
 		<result column="fext" property="fext" />
 	</resultMap>
 
