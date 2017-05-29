@@ -4,8 +4,9 @@ import cn.anniweiya.system.entity.SysRoleResource;
 import cn.anniweiya.system.mapper.SysRoleResourceMapper;
 import cn.anniweiya.system.service.ISysRoleResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -18,6 +19,6 @@ import org.springframework.stereotype.Service;
 @Service(value = "sysRoleResourceService")
 public class SysRoleResourceServiceImpl extends ServiceImpl<SysRoleResourceMapper, SysRoleResource> implements ISysRoleResourceService {
 
-    @Autowired
+    @Resource
     private SysRoleResourceMapper sysRoleResourcemapper;
 }
