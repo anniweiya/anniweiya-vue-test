@@ -5,7 +5,6 @@ import cn.anniweiya.user.entity.SysRole;
 import cn.anniweiya.user.entity.SysUser;
 import cn.anniweiya.user.service.impl.SysRoleServiceImpl;
 import cn.anniweiya.user.service.impl.SysUserServiceImpl;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +23,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser user = userService.selectOne(new EntityWrapper<SysUser>().eq("fusername", username));
+        SysUser user = userService.selectOneByUsername(username);
 
 
         if (user == null) {

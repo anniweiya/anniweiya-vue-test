@@ -13,6 +13,7 @@
     <bytecodeTargetLevel>
       <module name="anniweiyaback" target="1.8" />
       <module name="appserver" target="1.8" />
+      <module name="resource" target="1.8" />
       <module name="users" target="1.8" />
     </bytecodeTargetLevel>
   </component>
