@@ -1,6 +1,6 @@
 package cn.anniweiya.appserver.security.permission;
 
-import cn.anniweiya.user.service.impl.SysUserServiceImpl;
+import cn.anniweiya.system.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;

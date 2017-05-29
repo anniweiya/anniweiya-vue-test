@@ -1,10 +1,10 @@
 package cn.anniweiya.appserver.security.service;
 
 import cn.anniweiya.appserver.security.JwtUserFactory;
-import cn.anniweiya.user.entity.SysRole;
-import cn.anniweiya.user.entity.SysUser;
-import cn.anniweiya.user.service.ISysRoleService;
-import cn.anniweiya.user.service.ISysUserService;
+import cn.anniweiya.system.entity.SysRole;
+import cn.anniweiya.system.entity.SysUser;
+import cn.anniweiya.system.service.ISysRoleService;
+import cn.anniweiya.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,7 +1,7 @@
 package cn.anniweiya.appserver.security;
 
-import cn.anniweiya.user.entity.SysRole;
-import cn.anniweiya.user.entity.SysUser;
+import cn.anniweiya.system.entity.SysRole;
+import cn.anniweiya.system.entity.SysUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

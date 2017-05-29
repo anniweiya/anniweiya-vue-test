@@ -1,11 +1,11 @@
 package cn.anniweiya.appserver.test.sys;
 
 import cn.anniweiya.appserver.Application;
-import cn.anniweiya.user.entity.SysRole;
-import cn.anniweiya.user.entity.SysUser;
-import cn.anniweiya.user.mapper.SysRoleMapper;
-import cn.anniweiya.user.service.ISysRoleService;
-import cn.anniweiya.user.service.ISysUserService;
+import cn.anniweiya.system.entity.SysRole;
+import cn.anniweiya.system.entity.SysUser;
+import cn.anniweiya.system.mapper.SysRoleMapper;
+import cn.anniweiya.system.service.ISysRoleService;
+import cn.anniweiya.system.service.ISysUserService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

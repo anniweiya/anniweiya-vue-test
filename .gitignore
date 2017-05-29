@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+usersusers# Created by .ignore support plugin (hsz.mobi)
 ### Java template
 # Compiled class file
 *.class
@@ -25,3 +25,17 @@ hs_err_pid*
 
 .idea
 
+/appserver/target/
+appserver/src/test/resources/
+appserver/target/
+system/src/main/resources/
+system/src/test/java/cn/anniweiya/system/test/sys/
+system/target/classes/cn/anniweiya/user/controller/
+system/target/classes/cn/anniweiya/user/entity/
+system/target/classes/cn/anniweiya/user/mapper/
+system/target/classes/cn/anniweiya/user/service/
+system/target/generated-sources/
+system/target/generated-test-sources/
+system/target/test-classes/cn/
+/appserver/appserver.iml
+/system/target/
