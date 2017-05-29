@@ -3,8 +3,8 @@ package cn.anniweiya.appserver.security.service;
 import cn.anniweiya.appserver.security.JwtUserFactory;
 import cn.anniweiya.user.entity.SysRole;
 import cn.anniweiya.user.entity.SysUser;
-import cn.anniweiya.user.service.impl.SysRoleServiceImpl;
-import cn.anniweiya.user.service.impl.SysUserServiceImpl;
+import cn.anniweiya.user.service.ISysRoleService;
+import cn.anniweiya.user.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,9 +17,9 @@ import java.util.List;
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private SysUserServiceImpl userService;
+    private ISysUserService userService;
     @Autowired
-    private SysRoleServiceImpl roleService;
+    private ISysRoleService roleService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

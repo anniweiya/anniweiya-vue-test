@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.anniweiya.user.mapper.SysRoleMapper">
 
+
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="cn.anniweiya.user.entity.SysRole">
     <id column="fid" property="fid"/>
-    <result column="frole" property="frole"/>
+    <result column="fname" property="fname"/>
+    <result column="fcode" property="fcode"/>
     <result column="fupdate_time" property="fupdateTime"/>
     <result column="fupdator" property="fupdator"/>
     <result column="fcreate_time" property="fcreateTime"/>
@@ -14,22 +16,29 @@
     <result column="fext" property="fext"/>
   </resultMap>
 
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+    fid, fname, fcode, fupdate_time AS fupdateTime, fupdator, fcreate_time AS fcreateTime, fcreator, fis_delete AS fisDelete, fext
+  </sql>
 
-  <sql id="BaseSql">
-		${alias}.fid,
-		${alias}.frole,
-		${alias}.fupdate_time,
-		${alias}.fupdator,
-		${alias}.fcreate_time,
-		${alias}.fcreator,
-		${alias}.fis_delete,
-		${alias}.fext
-	</sql>
+
+
+  <sql id="Base_Sql">
+    ${alias}.fid as fid
+    ,${alias}.fname as fname
+    ,${alias}.fcode as fcode
+    ,${alias}.fupdate_time as fupdateTime
+    ,${alias}.fupdator as fupdator
+    ,${alias}.fcreate_time as fcreateTime
+    ,${alias}.fcreator as fcreator
+    ,${alias}.fis_delete as fisDelete
+    ,${alias}.fext as fext
+  </sql>
 
   <select id="findByUserRole"  parameterType="java.lang.Integer" resultType="cn.anniweiya.user.entity.SysRole">
     SELECT
-    <include refid="BaseSql">
-       <property name="alias" value="sr"/>
+    <include refid="Base_Sql">
+      <property name="alias" value="sr"/>
     </include>
     from sys_role as sr right join sys_user_role as sur on sr.fid = sur.frole_id
     where sur.fuser_id = #{userId}

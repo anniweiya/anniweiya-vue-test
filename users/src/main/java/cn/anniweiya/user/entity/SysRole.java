@@ -15,16 +15,26 @@ import java.util.Date;
  * </p>
  *
  * @author anniweiya
- * @since 2017-05-27
+ * @since 2017-05-29
  */
 @TableName("sys_role")
 public class SysRole extends Model<SysRole> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 系统角色id
+     */
 	@TableId(value="fid", type= IdType.AUTO)
 	private Integer fid;
-	private String frole;
+    /**
+     * 角色名
+     */
+	private String fname;
+    /**
+     * 角色代码
+     */
+	private String fcode;
 	@TableField("fupdate_time")
 	private Date fupdateTime;
 	private String fupdator;
@@ -44,12 +54,20 @@ public class SysRole extends Model<SysRole> {
 		this.fid = fid;
 	}
 
-	public String getFrole() {
-		return frole;
+	public String getFname() {
+		return fname;
 	}
 
-	public void setFrole(String frole) {
-		this.frole = frole;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getFcode() {
+		return fcode;
+	}
+
+	public void setFcode(String fcode) {
+		this.fcode = fcode;
 	}
 
 	public Date getFupdateTime() {
@@ -109,7 +127,8 @@ public class SysRole extends Model<SysRole> {
 	public String toString() {
 		return "SysRole{" +
 			   "fid=" + fid +
-			   ", frole='" + frole + '\'' +
+			   ", fname='" + fname + '\'' +
+			   ", fcode='" + fcode + '\'' +
 			   ", fupdateTime=" + fupdateTime +
 			   ", fupdator='" + fupdator + '\'' +
 			   ", fcreateTime=" + fcreateTime +

@@ -1,6 +1,6 @@
 package cn.anniweiya.user.controller;
 
-import cn.anniweiya.user.service.ISysUserRoleService;
+import cn.anniweiya.user.service.ISysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2017-05-29
  */
 @RestController
-@RequestMapping(value="/sysUserRole")
-public class SysUserRoleController {
+@RequestMapping(value="/sysResource")
+public class SysResourceController {
     @Autowired
-    private ISysUserRoleService sysUserRoleservice;
+    private ISysResourceService sysResourceservice;
 
     @RequestMapping(value="index")
-    public void sysUserRole(){
+    public void sysResource(){
 
     }
 

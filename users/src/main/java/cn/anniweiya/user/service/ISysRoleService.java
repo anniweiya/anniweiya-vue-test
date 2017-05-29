@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author anniweiya
- * @since 2017-05-27
+ * @since 2017-05-29
  */
 public interface ISysRoleService extends IService<SysRole> {
 

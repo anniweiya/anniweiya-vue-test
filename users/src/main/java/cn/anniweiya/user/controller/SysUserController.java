@@ -1,7 +1,9 @@
 package cn.anniweiya.user.controller;
 
-import org.springframework.stereotype.Controller;
+import cn.anniweiya.user.service.ISysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -9,10 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * </p>
  *
  * @author anniweiya
- * @since 2017-05-27
+ * @since 2017-05-29
  */
-@Controller
-@RequestMapping("/sysUser")
+@RestController
+@RequestMapping(value="/sysUser")
 public class SysUserController {
-	
+    @Autowired
+    private ISysUserService sysUserservice;
+
+    @RequestMapping(value="index")
+    public void sysUser(){
+
+    }
+
 }

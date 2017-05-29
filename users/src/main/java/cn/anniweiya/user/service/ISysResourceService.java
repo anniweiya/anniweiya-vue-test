@@ -1,6 +1,6 @@
 package cn.anniweiya.user.service;
 
-import cn.anniweiya.user.entity.SysUser;
+import cn.anniweiya.user.entity.SysResource;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -11,7 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author anniweiya
  * @since 2017-05-29
  */
-public interface ISysUserService extends IService<SysUser> {
-
-    SysUser selectOneByUsername(String username);
+public interface ISysResourceService extends IService<SysResource> {
+	
 }

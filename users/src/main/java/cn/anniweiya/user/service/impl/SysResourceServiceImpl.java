@@ -1,8 +1,8 @@
 package cn.anniweiya.user.service.impl;
 
-import cn.anniweiya.user.entity.SysUserRole;
-import cn.anniweiya.user.mapper.SysUserRoleMapper;
-import cn.anniweiya.user.service.ISysUserRoleService;
+import cn.anniweiya.user.entity.SysResource;
+import cn.anniweiya.user.mapper.SysResourceMapper;
+import cn.anniweiya.user.service.ISysResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
  * @since 2017-05-29
  */
 @Service
-public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements ISysUserRoleService {
+public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysResource> implements ISysResourceService {
 
     @Autowired
-    private SysUserRoleMapper sysUserRolemapper;
+    private SysResourceMapper sysResourcemapper;
 }

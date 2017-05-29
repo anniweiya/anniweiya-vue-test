@@ -4,8 +4,8 @@ import cn.anniweiya.appserver.Application;
 import cn.anniweiya.user.entity.SysRole;
 import cn.anniweiya.user.entity.SysUser;
 import cn.anniweiya.user.mapper.SysRoleMapper;
-import cn.anniweiya.user.service.impl.SysRoleServiceImpl;
-import cn.anniweiya.user.service.impl.SysUserServiceImpl;
+import cn.anniweiya.user.service.ISysRoleService;
+import cn.anniweiya.user.service.ISysUserService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,9 +27,9 @@ import static org.hamcrest.Matchers.*;
 public class TestConfig {
 
     @Autowired
-    private SysUserServiceImpl userService;
+    private ISysUserService userService;
     @Autowired
-    private SysRoleServiceImpl roleService;
+    private ISysRoleService roleService;
     @Autowired
     private SysRoleMapper sysRoleMapper;
 

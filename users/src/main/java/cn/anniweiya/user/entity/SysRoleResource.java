@@ -17,23 +17,32 @@ import java.util.Date;
  * @author anniweiya
  * @since 2017-05-29
  */
-@TableName("sys_user_role")
-public class SysUserRole extends Model<SysUserRole> {
+@TableName("sys_role_resource")
+public class SysRoleResource extends Model<SysRoleResource> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 角色资源关联表id
+     */
 	@TableId(value="fid", type= IdType.AUTO)
 	private Integer fid;
-	@TableField("fuser_id")
-	private Integer fuserId;
+    /**
+     * 角色id
+     */
 	@TableField("frole_id")
 	private Integer froleId;
-	@TableField("fupdate_time")
-	private Date fupdateTime;
-	private String fupdator;
+    /**
+     * 资源id
+     */
+	@TableField("fresource_id")
+	private Integer fresourceId;
+	private String fcreator;
 	@TableField("fcreate_time")
 	private Date fcreateTime;
-	private String fcreator;
+	private String fupdator;
+	@TableField("fupdate_time")
+	private Date fupdateTime;
 	@TableField("fis_delete")
 	private Integer fisDelete;
 	private String fext;
@@ -47,14 +56,6 @@ public class SysUserRole extends Model<SysUserRole> {
 		this.fid = fid;
 	}
 
-	public Integer getFuserId() {
-		return fuserId;
-	}
-
-	public void setFuserId(Integer fuserId) {
-		this.fuserId = fuserId;
-	}
-
 	public Integer getFroleId() {
 		return froleId;
 	}
@@ -63,20 +64,20 @@ public class SysUserRole extends Model<SysUserRole> {
 		this.froleId = froleId;
 	}
 
-	public Date getFupdateTime() {
-		return fupdateTime;
+	public Integer getFresourceId() {
+		return fresourceId;
 	}
 
-	public void setFupdateTime(Date fupdateTime) {
-		this.fupdateTime = fupdateTime;
+	public void setFresourceId(Integer fresourceId) {
+		this.fresourceId = fresourceId;
 	}
 
-	public String getFupdator() {
-		return fupdator;
+	public String getFcreator() {
+		return fcreator;
 	}
 
-	public void setFupdator(String fupdator) {
-		this.fupdator = fupdator;
+	public void setFcreator(String fcreator) {
+		this.fcreator = fcreator;
 	}
 
 	public Date getFcreateTime() {
@@ -87,12 +88,20 @@ public class SysUserRole extends Model<SysUserRole> {
 		this.fcreateTime = fcreateTime;
 	}
 
-	public String getFcreator() {
-		return fcreator;
+	public String getFupdator() {
+		return fupdator;
 	}
 
-	public void setFcreator(String fcreator) {
-		this.fcreator = fcreator;
+	public void setFupdator(String fupdator) {
+		this.fupdator = fupdator;
+	}
+
+	public Date getFupdateTime() {
+		return fupdateTime;
+	}
+
+	public void setFupdateTime(Date fupdateTime) {
+		this.fupdateTime = fupdateTime;
 	}
 
 	public Integer getFisDelete() {
@@ -118,14 +127,14 @@ public class SysUserRole extends Model<SysUserRole> {
 
 	@Override
 	public String toString() {
-		return "SysUserRole{" +
+		return "SysRoleResource{" +
 			   "fid=" + fid +
-			   ", fuserId=" + fuserId +
 			   ", froleId=" + froleId +
-			   ", fupdateTime=" + fupdateTime +
-			   ", fupdator='" + fupdator + '\'' +
-			   ", fcreateTime=" + fcreateTime +
+			   ", fresourceId=" + fresourceId +
 			   ", fcreator='" + fcreator + '\'' +
+			   ", fcreateTime=" + fcreateTime +
+			   ", fupdator='" + fupdator + '\'' +
+			   ", fupdateTime=" + fupdateTime +
 			   ", fisDelete=" + fisDelete +
 			   ", fext='" + fext + '\'' +
 			   '}';
