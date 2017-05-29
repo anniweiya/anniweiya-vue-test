@@ -4,6 +4,7 @@ import cn.anniweiya.system.entity.SysResource;
 import cn.anniweiya.system.entity.SysRole;
 import cn.anniweiya.system.mapper.SysResourceMapper;
 import cn.anniweiya.system.mapper.SysRoleMapper;
+import cn.anniweiya.system.mapper.SysUserMapper;
 import cn.anniweiya.system.service.ISysResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,8 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
     private SysResourceMapper sysResourcemapper;
     @Resource
     private SysRoleMapper sysRoleMapper;
+    @Resource
+    private SysUserMapper sysUserMapper;
 
     @Override
     public String queryAllPermission(Integer userId) {
@@ -38,5 +41,10 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
             result.addAll(sysResourcemapper.queryResource(sysRoleFid));
         }
         return result.toString();
+    }
+
+    @Override
+    public String queryAllPermission(String username) {
+        return this.queryAllPermission(sysUserMapper.queryUser(username));
     }
 }

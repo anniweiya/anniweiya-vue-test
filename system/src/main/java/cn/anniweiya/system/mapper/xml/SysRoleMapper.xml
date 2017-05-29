@@ -41,9 +41,8 @@
       <property name="alias" value="sr"/>
     </include>
     from sys_role as sr , sys_user_role AS sur
-    where sr.fid = sur.frole_id AND sur.fis_delete = 0 AND sr.fis_delete = 0 AND
-    sur.fuser_id = #{userId}
+    where sr.fid = sur.frole_id AND sur.fis_delete = 0 AND sr.fis_delete = 0
+    AND sur.fuser_id = #{userId}
   </select>
-
 
 </mapper>

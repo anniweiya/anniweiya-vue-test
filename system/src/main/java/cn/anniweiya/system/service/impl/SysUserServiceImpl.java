@@ -3,7 +3,6 @@ package cn.anniweiya.system.service.impl;
 import cn.anniweiya.system.entity.SysUser;
 import cn.anniweiya.system.mapper.SysUserMapper;
 import cn.anniweiya.system.service.ISysUserService;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +23,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private SysUserMapper sysUsermapper;
 
     public SysUser queryUser(String username) {
-        return this.selectOne(new EntityWrapper<SysUser>().eq("fusername", username));
+        return sysUsermapper.queryUser1(username);
     }
 }

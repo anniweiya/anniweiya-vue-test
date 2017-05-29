@@ -17,7 +17,7 @@ spring:
       prepStmtCacheSqlLimit: 2048
 
 mybatis:
-  mapper-locations: classpath:cn/anniweiya/system/xml/*Mapper.xml
+  mapper-locations: classpath:cn/anniweiya/system/mapper/xml/*Mapper.xml
   typeAliasesPackage: cn.anniweiya.system.entity
 
 logging:

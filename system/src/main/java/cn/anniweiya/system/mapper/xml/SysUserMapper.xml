@@ -26,8 +26,6 @@
     fid, fusername, fpassword, flastpassword_reset_date AS flastpasswordResetDate, fenabled, femail, flastname, ffirstname, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time AS fupdateTime, fis_delete AS fisDelete, fext
   </sql>
 
-
-
   <sql id="Base_Sql">
     ${alias}.fid as fid
     ,${alias}.fusername as fusername
@@ -44,4 +42,20 @@
     ,${alias}.fis_delete as fisDelete
     ,${alias}.fext as fext
   </sql>
+
+
+  <select id="queryUser"  parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT fid
+    from sys_user su where  su.fis_delete = 0
+    AND su.fusername = #{username}
+  </select>
+
+  <select id="queryUser1"  parameterType="java.lang.String" resultType="cn.anniweiya.system.entity.SysUser">
+    SELECT
+    <include refid="Base_Sql">
+      <property name="alias" value="su"/>
+    </include>
+    from sys_user su where  su.fis_delete = 0
+    AND su.fusername = #{username}
+  </select>
 </mapper>
