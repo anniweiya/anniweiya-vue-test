@@ -1,12 +1,13 @@
 package ${package.Controller};
 
 import ${package.Service}.${table.serviceName};
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 #if(${superControllerClassPackage})
 import ${superControllerClassPackage};
 #end
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -23,8 +24,8 @@ public class ${table.controllerName} extends ${superControllerClass} {
 #else
 public class ${table.controllerName} {
 #end
-    @Autowired
-    private ${table.serviceName} #if(${package.ModuleName})${package.ModuleName}#end${table.entityPath}service;
+    @Resource
+    private ${table.serviceName} #if(${package.ModuleName})${package.ModuleName}#end${table.entityPath}Service;
 
     @RequestMapping(value="index")
     public void #if(${package.ModuleName})${package.ModuleName}#end${table.entityPath}(){

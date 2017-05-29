@@ -4,7 +4,6 @@ import cn.anniweiya.appserver.security.JwtAuthenticationRequest;
 import cn.anniweiya.appserver.security.JwtTokenUtil;
 import cn.anniweiya.appserver.security.JwtUser;
 import cn.anniweiya.appserver.security.service.JwtAuthenticationResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
@@ -27,13 +27,13 @@ public class AuthenticationRestController {
     @Value("${jwt.header}")
     private String tokenHeader;
 
-    @Autowired
+    @Resource
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+    @Resource
     private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
+    @Resource
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)

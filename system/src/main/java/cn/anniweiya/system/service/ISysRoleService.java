@@ -15,6 +15,12 @@ import java.util.List;
  */
 public interface ISysRoleService extends IService<SysRole> {
 
-    List<SysRole> findByUserRole(Integer userId);
+    /**
+     * query user's role by userid
+     * @param userId
+     * @return
+     */
+    List<SysRole> queryUserRole(Integer userId);
+
 
 }

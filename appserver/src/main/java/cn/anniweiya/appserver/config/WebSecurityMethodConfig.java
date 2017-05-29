@@ -2,11 +2,12 @@ package cn.anniweiya.appserver.config;
 
 import cn.anniweiya.appserver.security.permission.JwtMethodSecurityExpressionHandler;
 import cn.anniweiya.appserver.security.permission.JwtPermissionEvaluator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
+
+import javax.annotation.Resource;
 
 /**
  * Created by anniweiya on 5/29/17.
@@ -16,9 +17,9 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 public class WebSecurityMethodConfig extends GlobalMethodSecurityConfiguration {
 
 
-    @Autowired
+    @Resource
     private JwtMethodSecurityExpressionHandler expressionHandler;
-    @Autowired
+    @Resource
     private JwtPermissionEvaluator evaluator;
 
     @Override

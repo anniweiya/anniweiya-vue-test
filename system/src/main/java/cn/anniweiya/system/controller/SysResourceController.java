@@ -1,9 +1,10 @@
 package cn.anniweiya.system.controller;
 
 import cn.anniweiya.system.service.ISysResourceService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/sysResource")
 public class SysResourceController {
-    @Autowired
-    private ISysResourceService sysResourceservice;
+    @Resource
+    private ISysResourceService sysResourceService;
 
-    @RequestMapping(value="index")
+    @RequestMapping(value="/index")
     public void sysResource(){
 
     }

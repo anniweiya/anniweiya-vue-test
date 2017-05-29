@@ -1,9 +1,10 @@
 package cn.anniweiya.system.controller;
 
 import cn.anniweiya.system.service.ISysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value="/sysUser")
 public class SysUserController {
-    @Autowired
-    private ISysUserService sysUserservice;
+    @Resource
+    private ISysUserService sysUserService;
 
     @RequestMapping(value="index")
     public void sysUser(){

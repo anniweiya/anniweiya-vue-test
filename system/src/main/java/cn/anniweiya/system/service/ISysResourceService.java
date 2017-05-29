@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2017-05-29
  */
 public interface ISysResourceService extends IService<SysResource> {
-	
+
+    String queryAllPermission(Integer userId);
+
 }

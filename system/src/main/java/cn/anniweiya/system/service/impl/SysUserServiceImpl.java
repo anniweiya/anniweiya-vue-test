@@ -5,8 +5,9 @@ import cn.anniweiya.system.mapper.SysUserMapper;
 import cn.anniweiya.system.service.ISysUserService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,10 +17,10 @@ import org.springframework.stereotype.Service;
  * @author anniweiya
  * @since 2017-05-29
  */
-@Service
+@Service(value = "sysUserService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 
-    @Autowired
+    @Resource
     private SysUserMapper sysUsermapper;
 
     public SysUser selectOneByUsername(String username) {

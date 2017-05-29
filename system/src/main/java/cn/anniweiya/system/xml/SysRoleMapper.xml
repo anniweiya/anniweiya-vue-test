@@ -35,17 +35,15 @@
     ,${alias}.fext as fext
   </sql>
 
-  <select id="findByUserRole"  parameterType="java.lang.Integer" resultType="cn.anniweiya.system.entity.SysRole">
+  <select id="queryUserRole"  parameterType="java.lang.Integer" resultType="cn.anniweiya.system.entity.SysRole">
     SELECT
     <include refid="Base_Sql">
       <property name="alias" value="sr"/>
     </include>
-    from sys_role as sr right join sys_user_role as sur on sr.fid = sur.frole_id
-    where sur.fuser_id = #{userId}
+    from sys_role as sr , sys_user_role AS sur
+    where sr.fid = sur.frole_id AND sur.fis_delete = 0 AND sr.fis_delete = 0 AND
+    sur.fuser_id = #{userId}
   </select>
 
 
-  <select id="findPermissions" resultType="java.lang.String" parameterType="java.lang.Long">
-    select fid from sys_role where fid = #{fid}
-  </select>
 </mapper>

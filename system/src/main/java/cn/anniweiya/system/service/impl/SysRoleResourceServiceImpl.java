@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @author anniweiya
  * @since 2017-05-29
  */
-@Service
+@Service(value = "sysRoleResourceService")
 public class SysRoleResourceServiceImpl extends ServiceImpl<SysRoleResourceMapper, SysRoleResource> implements ISysRoleResourceService {
 
     @Autowired

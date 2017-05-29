@@ -4,9 +4,9 @@ import cn.anniweiya.system.entity.SysRole;
 import cn.anniweiya.system.mapper.SysRoleMapper;
 import cn.anniweiya.system.service.ISysRoleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,14 +17,14 @@ import java.util.List;
  * @author anniweiya
  * @since 2017-05-29
  */
-@Service
+@Service(value = "sysRoleService")
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements ISysRoleService {
 
-    @Autowired
+    @Resource
     private SysRoleMapper sysRoleMapper;
 
     @Override
-    public List<SysRole> findByUserRole(Integer userId) {
-        return sysRoleMapper.findByUserRole(userId);
+    public List<SysRole> queryUserRole(Integer userId) {
+        return sysRoleMapper.queryUserRole(userId);
     }
 }

@@ -1,11 +1,11 @@
 package cn.anniweiya.appserver.security.permission;
 
 import cn.anniweiya.system.service.impl.SysUserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 
 /**
@@ -14,8 +14,8 @@ import java.io.Serializable;
 @Component
 public class JwtPermissionEvaluator implements PermissionEvaluator {
 
-    @Autowired
-    private SysUserServiceImpl userService;
+    @Resource
+    private SysUserServiceImpl sysUserService;
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {

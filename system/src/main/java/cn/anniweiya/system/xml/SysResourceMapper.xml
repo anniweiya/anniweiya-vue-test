@@ -29,7 +29,6 @@
   </sql>
 
 
-
   <sql id="Base_Sql">
     ${alias}.fid as fid
     ,${alias}.fparent_id as fparentId
@@ -48,4 +47,12 @@
     ,${alias}.fis_delete as fisDelete
     ,${alias}.fext as fext
   </sql>
+
+  <select id="queryResource" resultType="java.lang.String" parameterType="java.lang.Integer">
+    select fpermission_code as  fpermissionCode from
+    sys_resource AS srs, sys_role AS sr, sys_role_resource srr
+    WHERE srs.fis_delete = 0 AND sr.fis_delete = 0 AND srr.fis_delete = 0
+    AND srs.fid = srr.fresource_id AND sr.fid = srr.frole_id
+    AND sr.fid = #{roleId}
+  </select>
 </mapper>

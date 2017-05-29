@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
-    List<SysRole> findByUserRole(@Param("userId")Integer userId);
+    List<SysRole> queryUserRole(@Param("userId")Integer userId);
 
-    String findPermissions(long fid);
 }
