@@ -23,7 +23,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Resource
     private SysUserMapper sysUsermapper;
 
-    public SysUser selectOneByUsername(String username) {
+    public SysUser queryUser(String username) {
         return this.selectOne(new EntityWrapper<SysUser>().eq("fusername", username));
     }
 }
