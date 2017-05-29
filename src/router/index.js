@@ -14,16 +14,4 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-  console.log("to:" + to)
-  console.log("from:" + from)
-  const hideLeft = to.meta.hideLeft
-  store.dispatch('showLeftMenu', hideLeft)
-  store.dispatch('showLoading', true)
-  NProgress.start()
-  next()
-})
-router.afterEach(transition => {
-  NProgress.done()
-})
 export default router

@@ -11,13 +11,8 @@ import moment from 'moment'
 import ElementUI from 'element-ui'
 // import _g from './assets/js/global'
 import router from './router'
-// import Login from './components/users/Login.vue'
-// import NProgress from 'nprogress'
-// import VueRouter from 'vue-router'
 axios.defaults.baseURL = HOST
 axios.defaults.timeout = 1000 * 15
-// axios.defaults.headers.authKey = Lockr.get('authKey')
-// axios.defaults.headers.sessionId = Lockr.get('sessionId')
 axios.defaults.headers['Authorization'] = Lockr.get('token')
 axios.defaults.headers['Content-Type'] = 'application/json'
 
