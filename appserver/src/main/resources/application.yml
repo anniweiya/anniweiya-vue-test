@@ -20,12 +20,16 @@ mybatis:
   mapper-locations: classpath:cn/anniweiya/system/mapper/xml/*Mapper.xml
   typeAliasesPackage: cn.anniweiya.system.entity
 
-logging:
-  level:
-    root: INFO
+#logging:
+#  level:
+#    root: INFO
 #    org:
 #      springframework:
 #      web: ERROR
+logback:
+  path: /tmp/logs/anniweiya
+  level: info
+
 
 jwt:
   header: Authorization

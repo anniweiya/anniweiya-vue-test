@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.annotation.Resource;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
+//@SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)

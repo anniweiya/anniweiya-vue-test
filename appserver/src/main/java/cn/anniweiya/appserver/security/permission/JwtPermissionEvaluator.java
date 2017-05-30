@@ -1,6 +1,8 @@
 package cn.anniweiya.appserver.security.permission;
 
 import cn.anniweiya.appserver.service.ISystemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -13,17 +15,20 @@ import java.io.Serializable;
  */
 @Component
 public class JwtPermissionEvaluator implements PermissionEvaluator {
-
+    private Logger logger = LoggerFactory.getLogger(JwtPermissionEvaluator.class);
     @Resource
     private ISystemService systemService;
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-        if ((authentication == null) || (targetDomainObject == null) || !(permission instanceof String)){
-            return false;
+//        if ((authentication == null) || (targetDomainObject == null) || !(permission instanceof String)){
+//            return false;
+//        }
+        logger.info(authentication.getAuthorities().toString());
+        String userPermission = systemService.queryAllPermission(authentication.getName());
+        if (userPermission.contains(permission.toString())) {
+            return true;
         }
-        String name = authentication.getName();
-        systemService.queryAllPermission(name);
         return false;
     }
 
