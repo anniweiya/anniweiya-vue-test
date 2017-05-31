@@ -4,12 +4,12 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionOperations;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by anniweiya on 5/29/17.
  */
-@Service
+@Component
 public class JwtMethodSecurityExpressionHandler extends DefaultMethodSecurityExpressionHandler {
 
     @Override

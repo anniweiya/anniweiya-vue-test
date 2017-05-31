@@ -21,10 +21,19 @@ public class JwtPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-//        if ((authentication == null) || (targetDomainObject == null) || !(permission instanceof String)){
+        //do not verify the null object, because the OPTIONS requests will send with null object
+//        if ((authentication == null) || (targetDomainObject == null) || (permission == null)) {
+//            logger.info("PermissionEvaluator hasPermission----fail");
 //            return false;
 //        }
-        logger.info(authentication.getAuthorities().toString());
+        if (hasPermission(authentication, permission)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasPermission(Authentication authentication, Object permission) {
+        logger.info("username:" + authentication.getName() + ", role:" + authentication.getAuthorities().toString());
         String userPermission = systemService.queryAllPermission(authentication.getName());
         if (userPermission.contains(permission.toString())) {
             return true;
@@ -35,8 +44,8 @@ public class JwtPermissionEvaluator implements PermissionEvaluator {
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType,
                                  Object permission) {
-        if ((authentication == null) || (targetId == null) || !(permission instanceof String)){
-            return false;
+        if (hasPermission(authentication, permission)) {
+            return true;
         }
         return false;
     }

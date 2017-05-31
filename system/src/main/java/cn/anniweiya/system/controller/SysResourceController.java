@@ -3,6 +3,7 @@ package cn.anniweiya.system.controller;
 import cn.anniweiya.system.service.ISysResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,14 +27,20 @@ public class SysResourceController {
     @Resource
     private ISysResourceService sysResourceService;
 
-    @PreAuthorize("hasPermission(#hello, 'sys:system:select')")
     @RequestMapping(value = "/index")
-    public void sysResource(String hello) {
-        logger.info("WebSecurityMethodConfig");
+    public ResponseEntity index(String hello) {
+        return ResponseEntity.ok("hello from server, 200 ");
     }
 
-    @RequestMapping(value = "/index1")
-    public void sysResource() {
-        logger.info("sysResource1");
+    @PreAuthorize("hasPermission(#hello, 'sys:user:select')")
+    @RequestMapping(value = "/hasPermission1")
+    public ResponseEntity hasPermission1(String hello) {
+        return ResponseEntity.ok("hello from server, test has permission 1");
+    }
+
+    @PreAuthorize("hasPermission(#hello, 'hello', 'sys:user:select')")
+    @RequestMapping(value = "/hasPermission2")
+    public ResponseEntity hasPermission2(String hello) {
+        return ResponseEntity.ok("hello from server, test has permission 2");
     }
 }
