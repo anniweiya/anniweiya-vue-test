@@ -8,6 +8,7 @@ import cn.anniweiya.system.mapper.SysUserMapper;
 import cn.anniweiya.system.service.ISysResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ import java.util.Set;
  * @since 2017-05-29
  */
 @Service(value = "sysResourceService")
+@Transactional
 public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysResource> implements ISysResourceService {
 
     @Resource
@@ -46,5 +48,17 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
     @Override
     public String queryAllPermission(String username) {
         return this.queryAllPermission(sysUserMapper.queryUser(username));
+    }
+
+    @Override
+    public Integer insertSysResource(SysResource sysResource) {
+        Integer insert = sysResourcemapper.insert(sysResource);
+        return insert;
+    }
+
+    @Override
+    public Integer insertSysResourceTestTransactional(SysResource sysResource) {
+        Integer insert = sysResourcemapper.insert(sysResource);
+        throw new RuntimeException("test testTransactional");
     }
 }

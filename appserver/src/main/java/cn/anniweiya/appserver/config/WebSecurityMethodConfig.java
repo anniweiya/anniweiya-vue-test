@@ -28,9 +28,9 @@ public class WebSecurityMethodConfig extends GlobalMethodSecurityConfiguration {
     private JwtPermissionEvaluator jwtPermissionEvaluator;
 
     /**
-     * since 1.5.3 spring boot
+     * in 1.5.3 spring boot
      * this method must be override, otherwise the createExpressionHandler will not be running
-     * It's probably a bug
+     * It's probably a bug or I have some trouble
      * @param handlers
      */
     @Override

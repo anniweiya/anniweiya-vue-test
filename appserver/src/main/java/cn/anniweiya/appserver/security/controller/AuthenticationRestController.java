@@ -4,12 +4,15 @@ import cn.anniweiya.appserver.security.JwtAuthenticationRequest;
 import cn.anniweiya.appserver.security.JwtTokenUtil;
 import cn.anniweiya.appserver.security.JwtUser;
 import cn.anniweiya.appserver.security.service.JwtAuthenticationResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class AuthenticationRestController {
-
+    private Logger logger = LoggerFactory.getLogger(AuthenticationRestController.class);
     @Value("${jwt.header}")
     private String tokenHeader;
 
@@ -37,21 +40,28 @@ public class AuthenticationRestController {
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest,
+                                                       Device device) {
 
+        String token;
         // Perform the security
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authenticationRequest.getUsername(),
-                        authenticationRequest.getPassword()
-                )
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            final Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()
+                    )
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Reload password post-security so we can generate token
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails, device);
 
+            // Reload password post-security so we can generate token
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+            token = jwtTokenUtil.generateToken(userDetails, device);
+        } catch (AuthenticationException e) {
+            logger.error("createAuthenticationToken AuthenticationException!!! ", e);
+            return ResponseEntity.badRequest().body("username is password are wrong ");
+        }
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
