@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author anniweiya
@@ -15,7 +15,9 @@ public interface ISysUserService extends IService<SysUser> {
 
     /**
      * query a user by username
+     *
      * @param username
+     *
      * @return
      */
     SysUser queryUser(String username);

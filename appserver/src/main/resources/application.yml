@@ -1,9 +1,6 @@
-# config context path to "/" by setting an empty string
 server:
   contextPath:
 
-
-# jdbc_config
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&autoReconnect=true&useSSL=false
@@ -20,16 +17,10 @@ mybatis:
   mapper-locations: classpath:cn/anniweiya/system/mapper/xml/*Mapper.xml
   typeAliasesPackage: cn.anniweiya.system.entity
 
-#logging:
-#  level:
-#    root: INFO
-#    org:
-#      springframework:
-#      web: ERROR
+
 logback:
   path: /tmp/logs/anniweiya
   level: info
-
 
 jwt:
   header: Authorization

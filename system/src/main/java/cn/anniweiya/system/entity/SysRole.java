@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author anniweiya
@@ -25,116 +25,116 @@ public class SysRole extends Model<SysRole> {
     /**
      * 系统角色id
      */
-	@TableId(value="fid", type= IdType.AUTO)
-	private Integer fid;
+    @TableId(value = "fid", type = IdType.AUTO)
+    private Integer fid;
     /**
      * 角色名
      */
-	private String fname;
+    private String fname;
     /**
      * 角色代码
      */
-	private String fcode;
-	@TableField("fupdate_time")
-	private Date fupdateTime;
-	private String fupdator;
-	@TableField("fcreate_time")
-	private Date fcreateTime;
-	private String fcreator;
-	@TableField("fis_delete")
-	private Integer fisDelete;
-	private String fext;
+    private String fcode;
+    @TableField("fupdate_time")
+    private Date fupdateTime;
+    private String fupdator;
+    @TableField("fcreate_time")
+    private Date fcreateTime;
+    private String fcreator;
+    @TableField("fis_delete")
+    private Integer fisDelete;
+    private String fext;
 
 
-	public Integer getFid() {
-		return fid;
-	}
+    public Integer getFid() {
+        return fid;
+    }
 
-	public void setFid(Integer fid) {
-		this.fid = fid;
-	}
+    public void setFid(Integer fid) {
+        this.fid = fid;
+    }
 
-	public String getFname() {
-		return fname;
-	}
+    public String getFname() {
+        return fname;
+    }
 
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
 
-	public String getFcode() {
-		return fcode;
-	}
+    public String getFcode() {
+        return fcode;
+    }
 
-	public void setFcode(String fcode) {
-		this.fcode = fcode;
-	}
+    public void setFcode(String fcode) {
+        this.fcode = fcode;
+    }
 
-	public Date getFupdateTime() {
-		return fupdateTime;
-	}
+    public Date getFupdateTime() {
+        return fupdateTime;
+    }
 
-	public void setFupdateTime(Date fupdateTime) {
-		this.fupdateTime = fupdateTime;
-	}
+    public void setFupdateTime(Date fupdateTime) {
+        this.fupdateTime = fupdateTime;
+    }
 
-	public String getFupdator() {
-		return fupdator;
-	}
+    public String getFupdator() {
+        return fupdator;
+    }
 
-	public void setFupdator(String fupdator) {
-		this.fupdator = fupdator;
-	}
+    public void setFupdator(String fupdator) {
+        this.fupdator = fupdator;
+    }
 
-	public Date getFcreateTime() {
-		return fcreateTime;
-	}
+    public Date getFcreateTime() {
+        return fcreateTime;
+    }
 
-	public void setFcreateTime(Date fcreateTime) {
-		this.fcreateTime = fcreateTime;
-	}
+    public void setFcreateTime(Date fcreateTime) {
+        this.fcreateTime = fcreateTime;
+    }
 
-	public String getFcreator() {
-		return fcreator;
-	}
+    public String getFcreator() {
+        return fcreator;
+    }
 
-	public void setFcreator(String fcreator) {
-		this.fcreator = fcreator;
-	}
+    public void setFcreator(String fcreator) {
+        this.fcreator = fcreator;
+    }
 
-	public Integer getFisDelete() {
-		return fisDelete;
-	}
+    public Integer getFisDelete() {
+        return fisDelete;
+    }
 
-	public void setFisDelete(Integer fisDelete) {
-		this.fisDelete = fisDelete;
-	}
+    public void setFisDelete(Integer fisDelete) {
+        this.fisDelete = fisDelete;
+    }
 
-	public String getFext() {
-		return fext;
-	}
+    public String getFext() {
+        return fext;
+    }
 
-	public void setFext(String fext) {
-		this.fext = fext;
-	}
+    public void setFext(String fext) {
+        this.fext = fext;
+    }
 
-	@Override
-	protected Serializable pkVal() {
-		return this.fid;
-	}
+    @Override
+    protected Serializable pkVal() {
+        return this.fid;
+    }
 
-	@Override
-	public String toString() {
-		return "SysRole{" +
-			   "fid=" + fid +
-			   ", fname='" + fname + '\'' +
-			   ", fcode='" + fcode + '\'' +
-			   ", fupdateTime=" + fupdateTime +
-			   ", fupdator='" + fupdator + '\'' +
-			   ", fcreateTime=" + fcreateTime +
-			   ", fcreator='" + fcreator + '\'' +
-			   ", fisDelete=" + fisDelete +
-			   ", fext='" + fext + '\'' +
-			   '}';
-	}
+    @Override
+    public String toString() {
+        return "SysRole{" +
+               "fid=" + fid +
+               ", fname='" + fname + '\'' +
+               ", fcode='" + fcode + '\'' +
+               ", fupdateTime=" + fupdateTime +
+               ", fupdator='" + fupdator + '\'' +
+               ", fcreateTime=" + fcreateTime +
+               ", fcreator='" + fcreator + '\'' +
+               ", fisDelete=" + fisDelete +
+               ", fext='" + fext + '\'' +
+               '}';
+    }
 }

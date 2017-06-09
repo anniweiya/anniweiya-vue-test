@@ -18,9 +18,9 @@
 
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-    fid, fname, fcode, fupdate_time AS fupdateTime, fupdator, fcreate_time AS fcreateTime, fcreator, fis_delete AS fisDelete, fext
+    fid, fname, fcode, fupdate_time AS fupdateTime, fupdator, fcreate_time AS fcreateTime, fcreator, fis_delete AS
+    fisDelete, fext
   </sql>
-
 
 
   <sql id="Base_Sql">
@@ -35,7 +35,7 @@
     ,${alias}.fext as fext
   </sql>
 
-  <select id="queryUserRole"  parameterType="java.lang.Integer" resultType="cn.anniweiya.system.entity.SysRole">
+  <select id="queryUserRole" parameterType="java.lang.Integer" resultType="cn.anniweiya.system.entity.SysRole">
     SELECT
     <include refid="Base_Sql">
       <property name="alias" value="sr"/>

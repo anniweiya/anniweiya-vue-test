@@ -1,7 +1,6 @@
 package cn.anniweiya.appserver.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class CorsFilter implements Filter {
-    private Logger logger = LoggerFactory.getLogger(CorsFilter.class);
     @Value("${jwt.header}")
     private String tokenHeader;
 
@@ -32,7 +31,7 @@ public class CorsFilter implements Filter {
     }
 
     public void init(FilterConfig filterConfig) {
-        logger.info(" CorsFilter init ");
+        log.info(" CorsFilter init ");
     }
 
     public void destroy() {

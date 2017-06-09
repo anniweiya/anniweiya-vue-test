@@ -4,8 +4,7 @@ import cn.anniweiya.appserver.security.JwtAuthenticationRequest;
 import cn.anniweiya.appserver.security.JwtTokenUtil;
 import cn.anniweiya.appserver.security.JwtUser;
 import cn.anniweiya.appserver.security.service.JwtAuthenticationResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
@@ -25,8 +24,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@Slf4j
 public class AuthenticationRestController {
-    private Logger logger = LoggerFactory.getLogger(AuthenticationRestController.class);
     @Value("${jwt.header}")
     private String tokenHeader;
 
@@ -59,7 +58,7 @@ public class AuthenticationRestController {
             final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
             token = jwtTokenUtil.generateToken(userDetails, device);
         } catch (AuthenticationException e) {
-            logger.error("createAuthenticationToken AuthenticationException!!! ", e);
+            log.error("createAuthenticationToken AuthenticationException!!! ", e);
             return ResponseEntity.badRequest().body("username is password are wrong ");
         }
         // Return the token

@@ -2,8 +2,11 @@ package cn.anniweiya.system.controller;
 
 import cn.anniweiya.system.entity.SysResource;
 import cn.anniweiya.system.service.ISysResourceService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +25,19 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping(value = "/sysResource")
+@Api("sys resource")
+@Slf4j
 public class SysResourceController {
-    private Logger logger = LoggerFactory.getLogger(SysResourceController.class);
 
 
     @Resource
     private ISysResourceService sysResourceService;
 
     @RequestMapping(value = "/index")
+    @ApiOperation("test for index")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "hello", value = "hello", required = false, dataType = "String")
+    })
     public ResponseEntity index(String hello) {
         return ResponseEntity.ok("hello from server, 200 ");
     }

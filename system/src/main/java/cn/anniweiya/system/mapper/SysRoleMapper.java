@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
-  *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author anniweiya
@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
-    List<SysRole> queryUserRole(@Param("userId")Integer userId);
+    List<SysRole> queryUserRole(@Param("userId") Integer userId);
 
 }

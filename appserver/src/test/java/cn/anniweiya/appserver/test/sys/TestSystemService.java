@@ -4,10 +4,9 @@ import cn.anniweiya.appserver.Application;
 import cn.anniweiya.appserver.service.ISystemService;
 import cn.anniweiya.system.entity.SysRole;
 import cn.anniweiya.system.entity.SysUser;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,8 +21,8 @@ import static org.hamcrest.Matchers.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
+@Slf4j
 public class TestSystemService {
-    private Logger logger = LoggerFactory.getLogger(TestSystemService.class);
     @Resource
     private ISystemService systemService;
 
@@ -31,14 +30,14 @@ public class TestSystemService {
     @Test
     public void testQueryAllPermissionByusername() {
         String s = systemService.queryAllPermission("admin");
-        logger.info(s);
+        log.info(s);
         assertThat(s, notNullValue());
     }
 
     @Test
     public void testfindByUserRole() {
         List<SysRole> role = systemService.queryUserRole(1);
-        logger.info(role.toString());
+        log.info(role.toString());
 
         assertThat(role.get(0).getFid().toString(), notNullValue());
     }
@@ -46,7 +45,7 @@ public class TestSystemService {
     @Test
     public void testfindqueryUser() {
         SysUser amdin = systemService.queryUser("admin");
-        logger.info(amdin.toString());
+        log.info(amdin.toString());
         assertThat(amdin.getFid().toString(), notNullValue());
     }
 

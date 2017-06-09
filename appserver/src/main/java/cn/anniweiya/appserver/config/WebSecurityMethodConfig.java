@@ -2,8 +2,7 @@ package cn.anniweiya.appserver.config;
 
 import cn.anniweiya.appserver.security.permission.JwtMethodSecurityExpressionHandler;
 import cn.anniweiya.appserver.security.permission.JwtPermissionEvaluator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,8 +18,8 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@Slf4j
 public class WebSecurityMethodConfig extends GlobalMethodSecurityConfiguration {
-    private Logger logger = LoggerFactory.getLogger(WebSecurityMethodConfig.class);
 
     @Resource
     private JwtMethodSecurityExpressionHandler jwtMethodSecurityExpressionHandler;
@@ -31,6 +30,7 @@ public class WebSecurityMethodConfig extends GlobalMethodSecurityConfiguration {
      * in 1.5.3 spring boot
      * this method must be override, otherwise the createExpressionHandler will not be running
      * It's probably a bug or I have some trouble
+     *
      * @param handlers
      */
     @Override
@@ -40,7 +40,7 @@ public class WebSecurityMethodConfig extends GlobalMethodSecurityConfiguration {
 
     @Override
     protected MethodSecurityExpressionHandler createExpressionHandler() {
-        logger.info("MethodSecurityExpressionHandler createExpressionHandler ");
+        log.info("MethodSecurityExpressionHandler createExpressionHandler ");
         jwtMethodSecurityExpressionHandler
                 .setPermissionEvaluator(jwtPermissionEvaluator);
         return jwtMethodSecurityExpressionHandler;

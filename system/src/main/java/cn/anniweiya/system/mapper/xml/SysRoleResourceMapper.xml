@@ -18,9 +18,9 @@
 
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-    fid, frole_id AS froleId, fresource_id AS fresourceId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time AS fupdateTime, fis_delete AS fisDelete, fext
+    fid, frole_id AS froleId, fresource_id AS fresourceId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time
+    AS fupdateTime, fis_delete AS fisDelete, fext
   </sql>
-
 
 
   <sql id="Base_Sql">

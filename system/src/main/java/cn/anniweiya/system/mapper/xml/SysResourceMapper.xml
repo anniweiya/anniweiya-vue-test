@@ -25,7 +25,9 @@
 
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-    fid, fparent_id AS fparentId, fname, fcode, fpermission_code AS fpermissionCode, ftype, ficon, froute_url AS frouteUrl, forder, fsystem_id AS fsystemId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time AS fupdateTime, fis_delete AS fisDelete, fext
+    fid, fparent_id AS fparentId, fname, fcode, fpermission_code AS fpermissionCode, ftype, ficon, froute_url AS
+    frouteUrl, forder, fsystem_id AS fsystemId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time AS
+    fupdateTime, fis_delete AS fisDelete, fext
   </sql>
 
 
@@ -49,7 +51,7 @@
   </sql>
 
   <select id="queryResource" resultType="java.lang.String" parameterType="java.lang.Integer">
-    select fpermission_code as  fpermissionCode from
+    select fpermission_code as fpermissionCode from
     sys_resource AS srs, sys_role AS sr, sys_role_resource srr
     WHERE srs.fis_delete = 0 AND sr.fis_delete = 0 AND srr.fis_delete = 0
     AND srs.fid = srr.fresource_id AND sr.fid = srr.frole_id

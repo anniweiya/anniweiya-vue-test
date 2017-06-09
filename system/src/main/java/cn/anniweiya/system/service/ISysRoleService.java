@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author anniweiya
@@ -17,7 +17,9 @@ public interface ISysRoleService extends IService<SysRole> {
 
     /**
      * query user's role by userid
+     *
      * @param userId
+     *
      * @return
      */
     List<SysRole> queryUserRole(Integer userId);

@@ -12,7 +12,10 @@ import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
@@ -25,8 +28,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class MybatisPlusConfig
-//    implements TransactionManagementConfigurer
-{
+        implements TransactionManagementConfigurer {
     @Resource
     private MybatisProperties properties;
 
@@ -60,16 +62,16 @@ public class MybatisPlusConfig
         return sqlSessionFactory.getObject();
     }
 
-//    @Bean
-//    public PlatformTransactionManager txManager(DataSource dataSource) {
-//        return new DataSourceTransactionManager(dataSource);
-//    }
-//
-//    @Resource(name = "txManager")
-//    private PlatformTransactionManager txManager;
-//
-//    @Override
-//    public PlatformTransactionManager annotationDrivenTransactionManager() {
-//        return txManager;
-//    }
+    @Bean
+    public PlatformTransactionManager txManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Resource(name = "txManager")
+    private PlatformTransactionManager txManager;
+
+    @Override
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        return txManager;
+    }
 }

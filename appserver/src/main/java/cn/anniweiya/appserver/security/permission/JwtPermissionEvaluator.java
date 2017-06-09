@@ -1,8 +1,7 @@
 package cn.anniweiya.appserver.security.permission;
 
 import cn.anniweiya.appserver.service.ISystemService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -14,8 +13,8 @@ import java.io.Serializable;
  * Created by anniweiya on 5/29/17.
  */
 @Component
+@Slf4j
 public class JwtPermissionEvaluator implements PermissionEvaluator {
-    private Logger logger = LoggerFactory.getLogger(JwtPermissionEvaluator.class);
     @Resource
     private ISystemService systemService;
 
@@ -33,7 +32,7 @@ public class JwtPermissionEvaluator implements PermissionEvaluator {
     }
 
     private boolean hasPermission(Authentication authentication, Object permission) {
-        logger.info("username:" + authentication.getName() + ", role:" + authentication.getAuthorities().toString());
+        log.info("username:" + authentication.getName() + ", role:" + authentication.getAuthorities().toString());
         String userPermission = systemService.queryAllPermission(authentication.getName());
         if (userPermission.contains(permission.toString())) {
             return true;

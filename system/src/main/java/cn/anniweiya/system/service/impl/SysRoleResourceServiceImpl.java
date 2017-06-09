@@ -10,14 +10,15 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author anniweiya
  * @since 2017-05-29
  */
 @Service(value = "sysRoleResourceService")
-public class SysRoleResourceServiceImpl extends ServiceImpl<SysRoleResourceMapper, SysRoleResource> implements ISysRoleResourceService {
+public class SysRoleResourceServiceImpl extends ServiceImpl<SysRoleResourceMapper, SysRoleResource>
+        implements ISysRoleResourceService {
 
     @Resource
     private SysRoleResourceMapper sysRoleResourcemapper;

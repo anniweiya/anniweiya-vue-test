@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
-  *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author anniweiya
@@ -16,10 +16,12 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**
      * query user by username
+     *
      * @param username
+     *
      * @return user's primary key 'fid'
      */
-    Integer queryUser(@Param("username")String username);
+    Integer queryUser(@Param("username") String username);
 
     SysUser queryUser1(@Param("username") String username);
 

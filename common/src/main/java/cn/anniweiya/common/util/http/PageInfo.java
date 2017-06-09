@@ -12,6 +12,7 @@ import java.util.Map;
  * 分页类
  *
  * @param <T>
+ *
  * @author ThinkGem
  * @version 2013-7-2
  */
@@ -75,7 +76,7 @@ public class PageInfo<T> {
     /**
      * 构造方法
      *
-     * @param pageNo   当前页码
+     * @param pageNo 当前页码
      * @param pageSize 分页大小
      */
     public PageInfo(Integer pageNo, Integer pageSize) {
@@ -85,9 +86,9 @@ public class PageInfo<T> {
     /**
      * 构造方法
      *
-     * @param pageNo   当前页码
+     * @param pageNo 当前页码
      * @param pageSize 分页大小
-     * @param count    数据条数
+     * @param count 数据条数
      */
     public PageInfo(Integer pageNo, Integer pageSize, Long count) {
         this(pageNo, pageSize, count, new ArrayList<T>());
@@ -96,14 +97,18 @@ public class PageInfo<T> {
     /**
      * 构造方法
      *
-     * @param pageNo   当前页码
+     * @param pageNo 当前页码
      * @param pageSize 分页大小
-     * @param count    数据条数
-     * @param list     本页数据对象列表
+     * @param count 数据条数
+     * @param list 本页数据对象列表
      */
     public PageInfo(Integer pageNo, Integer pageSize, Long count, List<T> list) {
-        if (pageNo == null) pageNo = 1;
-        if (pageSize == null) pageSize = 10;
+        if (pageNo == null) {
+            pageNo = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
         this.setCount(count);
         this.setPageNo(pageNo);
         this.setPageSize(pageSize);
@@ -164,7 +169,7 @@ public class PageInfo<T> {
      * @param pageSize
      */
     public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize <= 0 ? 10 : pageSize;// > 500 ? 500 : pageSize;
+        this.pageSize = pageSize <= 0? 10 : pageSize;// > 500 ? 500 : pageSize;
     }
 
     /**

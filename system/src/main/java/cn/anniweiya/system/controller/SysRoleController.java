@@ -8,20 +8,20 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author anniweiya
  * @since 2017-05-29
  */
 @RestController
-@RequestMapping(value="/sysRole")
+@RequestMapping(value = "/sysRole")
 public class SysRoleController {
     @Resource
     private ISysRoleService sysRoleService;
 
-    @RequestMapping(value="index")
-    public void sysRole(){
+    @RequestMapping(value = "index")
+    public void sysRole() {
 
     }
 

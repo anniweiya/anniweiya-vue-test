@@ -27,9 +27,9 @@ public final class JwtUserFactory {
         );
     }
 
-    private static List<GrantedAuthority> mapToGrantedAuthorities(List<SysRole>  authorities) {
+    private static List<GrantedAuthority> mapToGrantedAuthorities(List<SysRole> authorities) {
         return authorities.stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getFcode()))
-                .collect(Collectors.toList());
+                          .map(authority -> new SimpleGrantedAuthority(authority.getFcode()))
+                          .collect(Collectors.toList());
     }
 }

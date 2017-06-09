@@ -2,7 +2,8 @@ package cn.anniweiya.common.util.http;
 
 public class Result {
 
-    private static final ResponseMessage RESPONSE_MESSAGE_SUCCESS = new ResponseMessage(ResponseMessageCodeEnum.SUCCESS.getCode(), "");
+    private static final ResponseMessage RESPONSE_MESSAGE_SUCCESS =
+            new ResponseMessage(ResponseMessageCodeEnum.SUCCESS.getCode(), "");
 
     public static ResponseMessage success() {
         return RESPONSE_MESSAGE_SUCCESS;
