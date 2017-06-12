@@ -9,6 +9,7 @@ import _ from 'lodash'
 import store from './vuex/store'
 import moment from 'moment'
 import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 // import _g from './assets/js/global'
 import router from './router'
 axios.defaults.baseURL = HOST
