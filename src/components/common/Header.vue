@@ -1,22 +1,53 @@
 <template>
-  <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-    <el-menu-item index="1" disabled="">anniweiya</el-menu-item>
-  </el-menu>
+  <div class="header">
+    <div class="logo">manage system</div>
+    <div class="user-info">
+      <el-dropdown trigger="click" @command="handleCommand">
+                <span class="el-dropdown-link">
+                    {{username}}
+                </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="loginout">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+  </div>
+
 </template>
 
 <script>
-  import ElMenu from "../../../node_modules/element-ui/packages/menu/src/menu";
-  import ElMenuItem from "../../../node_modules/element-ui/packages/menu/src/menu-item";
   export default {
-    components: {
-      ElMenuItem,
-      ElMenu
-    },
+    components: {},
     data() {
-      return {
-        activeIndex: '1',
+      return {}
+    },
+    computed:{
+      username(){
+          return "anniweiya"
       }
     },
-    methods: {}
+    methods: {
+      handleCommand(){
+
+      }
+    }
   }
 </script>
+
+<style>
+  .header {
+    background-color: #EFF2F7;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 70px;
+    font-size: 22px;
+    line-height: 70px;
+  }
+
+  .header .logo{
+    float: left;
+    width:250px;
+    text-align: center;
+  }
+</style>

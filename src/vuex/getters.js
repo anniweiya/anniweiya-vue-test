@@ -1,5 +1,4 @@
-const getters = {
-  // getCount: state => state.count,
-}
 
-export default getters
+export default {
+  resourceList: state => state.resourceList,
+}

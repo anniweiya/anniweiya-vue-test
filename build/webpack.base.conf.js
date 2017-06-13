@@ -22,9 +22,9 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   plugins: [
-    new webpack.DefinePlugin({
-      HOST: process.env.NODE_ENV === 'production' ? PUB_HOST : DEV_HOST
-    })
+    // new webpack.DefinePlugin({
+    //   HOST: process.env.NODE_ENV === 'production' ? PUB_HOST : DEV_HOST
+    // })
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],

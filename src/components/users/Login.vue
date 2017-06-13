@@ -42,15 +42,9 @@
 </template>
 
 <script>
-  import http from '../../assets/js/http'
-  import ElForm from "../../../node_modules/element-ui/packages/form/src/form";
-  import ElFormItem from "../../../node_modules/element-ui/packages/form/src/form-item";
-  import ElInput from "../../../node_modules/element-ui/packages/input/src/input";
+  import http from '@/js/http/http'
   export default {
     components: {
-      ElInput,
-      ElFormItem,
-      ElForm
     },
     data(){
       return {
@@ -59,11 +53,8 @@
         form: {
           username: '',
           password: '',
-          verifyCode: ''
         },
         requireVerify: false,
-        verifyUrl: '',
-        verifyImg: window.HOST + 'admin/verify',
         rules2: {
           username: [
             {required: true, message: '请输入账号', trigger: 'blur'}
