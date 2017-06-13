@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
+import {baseUrl} from "@/config/env"
 import Lockr from 'lockr'
 import Cookies from 'js-cookie'
 import _ from 'lodash'
@@ -10,7 +11,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 // import _g from './assets/js/global'
 import router from './router'
-// axios.defaults.baseURL = HOST
+axios.defaults.baseURL = baseUrl
 axios.defaults.timeout = 1000 * 15
 axios.defaults.headers['Authorization'] = Lockr.get('token')
 axios.defaults.headers['Content-Type'] = 'application/json'

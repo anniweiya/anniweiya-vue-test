@@ -1,17 +1,19 @@
 <template>
-  <el-submenu v-if="item.children && item.children.length>0">
+  <el-submenu :index="item.href" v-if="item.children && item.children.length>0">
     <template slot="title">
-      <i :class="item.icon">{{item.name}}</i>
+      <i :class="item.icon"></i>{{item.name}}
     </template>
-    <template>
-      <sub-menu v-if="item.children && item.children.length" :param="child"></sub-menu>
-      <el-menu-item v-else="">
-        <i :class="child.icon">{{child.name}}</i>
+    <template v-for="child in item.children">
+      <sub-menu v-if="child.children && child.children.length>0" :param="child"></sub-menu>
+      <el-menu-item :index="child.href" v-else>
+        <i :class="child.icon"></i>
+        {{child.name}}
       </el-menu-item>
     </template>
   </el-submenu>
-  <el-menu-item v-else="">
-    <i>{{item.name}}</i>
+  <el-menu-item :index="item.href" v-else>
+    <i :class="item.icon"></i>
+    {{item.name}}
   </el-menu-item>
 </template>
 
@@ -19,20 +21,18 @@
   import LeftResourceComponent from '@/components/common/LeftResource.vue'
 
   export default {
-    name:'LeftResourceComponent',
+    name: 'LeftResourceComponent',
     props: ['param'],
     components: {
       LeftResourceComponent
     },
     data() {
       return {
-          item: this.param
+        item: this.param
       }
     },
-    methods: {
-    },
-    computed: {
-    }
+    methods: {},
+    computed: {}
   }
 </script>
 
