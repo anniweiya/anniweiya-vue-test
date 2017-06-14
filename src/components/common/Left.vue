@@ -1,11 +1,11 @@
 <template>
-  <aside class="left" :class="{ slideInLeft: show, slideOutLeft: !show }">
+  <div class="left">
     <el-menu>
       <template v-for="item in resourceList">
         <left-resource-component :param="item"></left-resource-component>
       </template>
     </el-menu>
-  </aside>
+  </div>
 
 </template>
 
@@ -41,20 +41,11 @@
 </script>
 
 <style>
-
-  .slideInLeft {
-    animation-duration: .377s;
-    animation-name: slideInLeft;
-  }
-
-  .slideOutLeft {
-    animation-duration: .377s;
-    animation-name: slideOutLeft;
-  }
-
   .left {
-    min-height: 100%;
-    width: 230px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
   }
 
 </style>

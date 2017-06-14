@@ -1,51 +1,56 @@
 <template>
-  <div>
-    <el-form :model="form" :rules="rules2" ref="form" label-position="left" label-width="0px"
-             class="demo-ruleForm card-box loginform">
-      <el-form-item prop="username">
-        <el-input type="text" v-model="form.username" auto-complete="off" placeholder="account"></el-input>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input type="text" v-model="form.password" auto-complete="off" placeholder="password"></el-input>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="clear()">clear </el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="handleSubmit('form')">submit
-        </el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="getUser()">getUser</el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="testRole()">testRole
-        </el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="testSysResource()">
-          testSysResource
-        </el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="testPermission1()">
-          testPermission1
-        </el-button>
-      </el-form-item>
-      <el-form-item style="...">
-        <el-button type="primary" style="..." v-loading="loading" @click.native.prevent="testPermission2()">
-          testPermission2
-        </el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+  <el-form :model="form" :rules="rules2" ref="form" label-position="left" label-width="0px"
+           class="demo-ruleForm card-box loginform">
+    <el-form-item prop="username">
+      <el-input type="text" v-model="form.username" auto-complete="off" placeholder="account"></el-input>
+    </el-form-item>
+    <el-form-item prop="password">
+      <el-input type="text" v-model="form.password" auto-complete="off" placeholder="password"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="clear()">clear </el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="handleSubmit('form')">submit
+      </el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="getUser()">getUser</el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="testRole()">testRole
+      </el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="testSysResource()">
+        testSysResource
+      </el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="testPermission1()">
+        testPermission1
+      </el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" v-loading="loading" @click.native.prevent="testPermission2()">
+        testPermission2
+      </el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
   import http from '@/js/http/http'
+  import {
+    API_AUTH,
+    API_GETUSER,
+    API_TESTROLE,
+    API_TESTSYSRESOURCE,
+    API_TESTPERMISSION1,
+    API_TESTPERMISSION2
+  } from '@/js/http/api'
   export default {
-    components: {
-    },
+    components: {},
     data(){
       return {
         title: '',
@@ -77,33 +82,35 @@
         let data = {}
         data.username = this.form.username
         data.password = this.form.password
-        this.apiPost('/auth', data).then((res) => {
+        this.apiPost(API_AUTH, data).then((res) => {
           bus.$message({message: res.token});
+          console.info(res)
           Lockr.set('token', res.token)
+          console.log(Lockr.get('token'))
         })
       },
       getUser(){
-        this.apiPost('/user', {}).then((res) => {
+        this.apiPost(API_GETUSER, {}).then((res) => {
           bus.$message({message: res});
         })
       },
       testRole(){
-        this.apiGet('/protected', {}).then((res) => {
+        this.apiGet(API_TESTROLE, {}).then((res) => {
           bus.$message({message: res});
         })
       },
       testSysResource(){
-        this.apiGet('/sysResource/index', {}).then((res) => {
+        this.apiGet(API_TESTSYSRESOURCE, {}).then((res) => {
           bus.$message({message: res});
         })
       },
       testPermission1(){
-        this.apiPost('/sysResource/hasPermission1', {hello: "hello"}).then((res) => {
+        this.apiPost(API_TESTPERMISSION1, {hello: "hello"}).then((res) => {
           bus.$message({message: res});
         })
       },
       testPermission2(){
-        this.apiPost('/sysResource/hasPermission2', {hello: "hello"}).then((res) => {
+        this.apiPost(API_TESTPERMISSION2, {hello: "hello"}).then((res) => {
           bus.$message({message: res});
         })
       }

@@ -1,18 +1,19 @@
 <template>
-  <div class="header">
-    <div class="logo">manage system</div>
-    <div class="user-info">
-      <el-dropdown trigger="click" @command="handleCommand">
-                <span class="el-dropdown-link">
-                    {{username}}
-                </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="loginout">退出</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
-  </div>
-
+  <header class="header">
+    <el-menu theme="dark" mode="horizontal" class="menu" @select="handleSelect">
+      <el-row  type="flex" justify="space-between">
+        <el-col :xs="8" :sm="6" :md="3">
+          <el-menu-item index="logo"> {{ username }} </el-menu-item>
+        </el-col>
+        <el-col >
+          <el-menu-item index="handle"> hello </el-menu-item>
+        </el-col>
+        <el-col>
+          <el-menu-item index="quit">quit</el-menu-item>
+        </el-col>
+      </el-row>
+    </el-menu>
+  </header>
 </template>
 
 <script>
@@ -21,14 +22,14 @@
     data() {
       return {}
     },
-    computed:{
+    computed: {
       username(){
-          return "anniweiya"
+        return "anniweiya"
       }
     },
     methods: {
-      handleCommand(){
-
+      handleSelect(key){
+        console.info(key)
       }
     }
   }
@@ -36,18 +37,16 @@
 
 <style>
   .header {
-    background-color: #EFF2F7;
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    height: 70px;
-    font-size: 22px;
-    line-height: 70px;
+    height: 4rem;
+    background: #d3dce6;
   }
 
-  .header .logo{
-    float: left;
-    width:250px;
-    text-align: center;
+  .menu {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 4rem;
+    top: 0;
+    left: 0;
   }
 </style>
