@@ -15,6 +15,11 @@ import java.util.Set;
  */
 public interface SysResourceMapper extends BaseMapper<SysResource> {
 
-    Set<String> queryResource(Integer roleId);
+    /**
+     * query permissionCode by roleId
+     * @param roleId
+     * @return
+     */
+    Set<String> queryPermissionCode(Integer roleId);
 
 }

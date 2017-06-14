@@ -7,6 +7,7 @@ import cn.anniweiya.system.mapper.SysRoleMapper;
 import cn.anniweiya.system.mapper.SysUserMapper;
 import cn.anniweiya.system.service.ISysResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ import java.util.Set;
  */
 @Service(value = "sysResourceService")
 @Transactional
+@Slf4j
 public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysResource> implements ISysResourceService {
 
     @Resource
@@ -40,7 +42,7 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
         Set<String> result = new HashSet<>();
         for (SysRole sysRole : sysRoles) {
             Integer sysRoleFid = sysRole.getFid();
-            result.addAll(sysResourcemapper.queryResource(sysRoleFid));
+            result.addAll(sysResourcemapper.queryPermissionCode(sysRoleFid));
         }
         return result.toString();
     }
