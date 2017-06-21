@@ -1,17 +1,16 @@
 <template>
-  <el-submenu :index="item.href" v-if="item.children && item.children.length>0">
+  <el-submenu :index="item.routeUrl" v-if="item.children && item.children.length>0">
     <template slot="title">
       <i :class="item.icon"></i>{{item.name}}
     </template>
     <template v-for="child in item.children">
-      <sub-menu v-if="child.children && child.children.length>0" :param="child"></sub-menu>
-      <el-menu-item :index="child.href" v-else>
-        <i :class="child.icon"></i>
-        {{child.name}}
+      <left-resource-component v-if="child.children && child.children.length>0" :param="child"></left-resource-component>
+      <el-menu-item :index="child.routeUrl" v-else>
+        <i :class="child.icon"></i> {{child.name}}
       </el-menu-item>
     </template>
   </el-submenu>
-  <el-menu-item :index="item.href" v-else>
+  <el-menu-item :index="item.routeUrl" v-else>
     <i :class="item.icon"></i>
     {{item.name}}
   </el-menu-item>

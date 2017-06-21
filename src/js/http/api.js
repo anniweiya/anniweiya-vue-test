@@ -12,4 +12,5 @@ export const API_TESTPERMISSION1= baseUrl + '/sysResource/hasPermission1';
 export const API_TESTPERMISSION2= baseUrl + '/sysResource/hasPermission2';
 
 
-export const TEST_DATA = 'http://ian1:8081/static/data/data.json';
+export const API_QUERY_RESOURCELIST = baseUrl + "/sysResource/queryResourceList";
+// export const TEST_DATA = 'http://ian1:8081/static/data/data.json';
