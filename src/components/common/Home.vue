@@ -8,7 +8,7 @@
         </el-col>
         <el-col :xs="16" :sm="18" :md="21">
           <div class="route">
-            <login-component></login-component>
+            <router-view></router-view>
           </div>
         </el-col>
       </el-row>
@@ -19,12 +19,10 @@
 <script>
   import HeaderComponent from '@/components/common/Header.vue'
   import LeftComponent from '@/components/common/Left.vue'
-  import LoginComponent from '@/components/users/Login.vue'
   export default {
     components: {
       HeaderComponent,
-      LeftComponent,
-      LoginComponent
+      LeftComponent
     },
     data() {
       return {}

@@ -1,6 +1,6 @@
 <template>
   <div class="left">
-    <el-menu>
+    <el-menu :default-active="onRoutes" router>
       <template v-for="item in resourceList">
         <left-resource-component :param="item"></left-resource-component>
       </template>
@@ -33,6 +33,9 @@
       this.load();
     },
     computed: {
+      onRoutes(){
+        return this.$route.path;
+      },
       ...mapGetters([
         'resourceList'
       ])
