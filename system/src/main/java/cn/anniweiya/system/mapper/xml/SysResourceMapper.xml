@@ -58,4 +58,10 @@
     AND srr.frole_id = #{roleId}
     WHERE srs.fis_delete = 0 AND srr.fis_delete = 0
   </select>
+
+
+  <select id="">
+
+  </select>
+
 </mapper>
