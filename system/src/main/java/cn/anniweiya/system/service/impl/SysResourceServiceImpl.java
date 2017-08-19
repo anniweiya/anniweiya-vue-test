@@ -5,6 +5,7 @@ import cn.anniweiya.system.entity.SysRole;
 import cn.anniweiya.system.mapper.SysResourceMapper;
 import cn.anniweiya.system.mapper.SysRoleMapper;
 import cn.anniweiya.system.mapper.SysUserMapper;
+import cn.anniweiya.system.po.SysResourcePO;
 import cn.anniweiya.system.service.ISysResourceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -62,5 +63,10 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
     public Integer insertSysResourceTestTransactional(SysResource sysResource) {
         Integer insert = sysResourcemapper.insert(sysResource);
         throw new RuntimeException("test testTransactional");
+    }
+
+    @Override
+    public List<SysResourcePO> queryResourceList() {
+        return sysResourcemapper.queryResourceList();
     }
 }

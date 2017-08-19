@@ -26,7 +26,7 @@ import java.io.IOException;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Slf4j
-public abstract class AbstractTestTemplate<T> {
+public abstract class AbstractTestTemplate {
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -54,11 +54,12 @@ public abstract class AbstractTestTemplate<T> {
     public void test() {
         httpHeaders.add(tokenHeader, token);
         entity = new HttpEntity<>(getRequestParams(), httpHeaders);
-        ResponseEntity<String> forEntity = this.restTemplate.exchange(getRequestUrl(), HttpMethod.POST, entity, String.class);
+        ResponseEntity forEntity = this.restTemplate.exchange(getRequestUrl(), HttpMethod.POST, entity, String.class);
+        log.info("response: " + forEntity.getBody());
         handleResult(forEntity);
     }
 
-    protected abstract T getRequestParams();
+    protected abstract Object getRequestParams();
     protected abstract String getRequestUrl();
     protected abstract void handleResult(ResponseEntity<String> result);
 

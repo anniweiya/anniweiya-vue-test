@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 
 @Slf4j
-public class TestSysTransactional extends AbstractTestTemplate{
+public class TestSysQueryResourceList extends AbstractTestTemplate{
     @Override
     protected String getRequestParams() {
         return "";
@@ -12,7 +12,7 @@ public class TestSysTransactional extends AbstractTestTemplate{
 
     @Override
     protected String getRequestUrl() {
-        return "/sysResource/testTransactional";
+        return "/sysResource/queryResourceList";
     }
 
     @Override

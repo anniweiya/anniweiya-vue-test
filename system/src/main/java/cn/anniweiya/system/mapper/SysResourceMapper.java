@@ -1,8 +1,10 @@
 package cn.anniweiya.system.mapper;
 
 import cn.anniweiya.system.entity.SysResource;
+import cn.anniweiya.system.po.SysResourcePO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,4 +24,6 @@ public interface SysResourceMapper extends BaseMapper<SysResource> {
      */
     Set<String> queryPermissionCode(Integer roleId);
 
+
+    List<SysResourcePO> queryResourceList();
 }

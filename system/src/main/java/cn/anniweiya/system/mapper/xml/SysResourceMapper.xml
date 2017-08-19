@@ -60,8 +60,24 @@
   </select>
 
 
-  <select id="">
+  <resultMap id="sysResourcePO" type="cn.anniweiya.system.po.SysResourcePO">
+    <id column="fid" property="fid"/>
+    <result column="fparentId" property="fparentId"/>
+    <result column="name" property="name"/>
+    <result column="icon" property="icon"/>
+    <result column="routeUrl" property="routeUrl"/>
+    <collection column="fid" property="children" select="queryResourceListChildren"/>
+  </resultMap>
 
+
+  <select id="queryResourceList" resultMap="sysResourcePO" parameterType="java.lang.Integer">
+    SELECT sr.fname name, sr.fparent_id fparentId, sr.fid, sr.ficon icon, sr.froute_url routeUrl
+     from sys_resource sr where sr.fparent_id = 0
+  </select>
+
+  <select id="queryResourceListChildren" resultMap="sysResourcePO" parameterType="java.lang.Integer">
+      SELECT sr.fname name, sr.fparent_id fparentId, sr.fid, sr.ficon icon, sr.froute_url routeUrl
+     from sys_resource sr where sr.fparent_id = #{fparentId}
   </select>
 
 </mapper>

@@ -1,8 +1,11 @@
 package cn.anniweiya.system.service;
 
 import cn.anniweiya.system.entity.SysResource;
+import cn.anniweiya.system.po.SysResourcePO;
 import com.baomidou.mybatisplus.service.IService;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * <p>
@@ -37,4 +40,7 @@ public interface ISysResourceService extends IService<SysResource> {
     Integer insertSysResource(SysResource sysResource);
 
     Integer insertSysResourceTestTransactional(SysResource sysResource);
+
+
+    List<SysResourcePO> queryResourceList();
 }
