@@ -1,5 +1,6 @@
 package cn.anniweiya.system.service.impl;
 
+import cn.anniweiya.common.jwt.JwtTokenVO;
 import cn.anniweiya.system.entity.SysResource;
 import cn.anniweiya.system.entity.SysRole;
 import cn.anniweiya.system.mapper.SysResourceMapper;
@@ -13,8 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -36,6 +39,8 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
     private SysRoleMapper sysRoleMapper;
     @Resource
     private SysUserMapper sysUserMapper;
+    @Resource
+    private JwtTokenVO jwtTokenVO;
 
     @Override
     public String queryAllPermission(Integer userId) {
@@ -67,6 +72,14 @@ public class SysResourceServiceImpl extends ServiceImpl<SysResourceMapper, SysRe
 
     @Override
     public List<SysResourcePO> queryResourceList() {
-        return sysResourcemapper.queryResourceList();
+
+        Integer userId = jwtTokenVO.getUserId();
+        List<Integer> roleId = jwtTokenVO.getRoleId();
+        Map<String, Object> params = new HashMap<>();
+        params.put("roleId", roleId);
+        params.put("userId", userId);
+        params.put("fparentId", null);
+        return sysResourcemapper.queryResourceList(params);
+
     }
 }

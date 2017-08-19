@@ -42,8 +42,8 @@ public class BaseQueryCondition {
         this.orderByType = orderByType;
     }
 
-    public PageInfo getPageInfo() {
-        return new PageInfo(pageNo, pageSize);
+    public PageInfo<?> getPageInfo() {
+        return new PageInfo<>(pageNo, pageSize);
     }
 
 }

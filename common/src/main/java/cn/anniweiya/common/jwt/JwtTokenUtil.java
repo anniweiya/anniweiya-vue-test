@@ -1,4 +1,4 @@
-package cn.anniweiya.appserver.security;
+package cn.anniweiya.common.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,20 +13,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cn.anniweiya.common.constant.Constant.AUDIENCE_MOBILE;
+import static cn.anniweiya.common.constant.Constant.AUDIENCE_TABLET;
+import static cn.anniweiya.common.constant.Constant.AUDIENCE_UNKNOWN;
+import static cn.anniweiya.common.constant.Constant.AUDIENCE_WEB;
+import static cn.anniweiya.common.constant.Constant.CLAIM_KEY_AUDIENCE;
+import static cn.anniweiya.common.constant.Constant.CLAIM_KEY_CREATED;
+import static cn.anniweiya.common.constant.Constant.CLAIM_KEY_ROLEID;
+import static cn.anniweiya.common.constant.Constant.CLAIM_KEY_USERFID;
+import static cn.anniweiya.common.constant.Constant.CLAIM_KEY_USERNAME;
+
 @Component
 public class JwtTokenUtil implements Serializable {
 
     private static final long serialVersionUID = -3301605591108950415L;
-
-    static final String CLAIM_KEY_USERNAME = "sub";
-    static final String CLAIM_KEY_AUDIENCE = "audience";
-    static final String CLAIM_KEY_CREATED = "created";
-    static final String CLAIM_KEY_USERFID = "userFid";
-
-    private static final String AUDIENCE_UNKNOWN = "unknown";
-    private static final String AUDIENCE_WEB = "web";
-    private static final String AUDIENCE_MOBILE = "mobile";
-    private static final String AUDIENCE_TABLET = "tablet";
 
     @Value("${jwt.secret}")
     private String secret;
@@ -112,7 +112,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private Boolean isCreatedBeforeLastPasswordReset(Date created, Date lastPasswordReset) {
-        return (lastPasswordReset != null && created.before(lastPasswordReset));
+        return lastPasswordReset != null && created.before(lastPasswordReset);
     }
 
     private String generateAudience(Device device) {
@@ -129,13 +129,14 @@ public class JwtTokenUtil implements Serializable {
 
     private Boolean ignoreTokenExpiration(String token) {
         String audience = getAudienceFromToken(token);
-        return (AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience));
+        return AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience);
     }
 
     public String generateToken(JwtUser userDetails, Device device) {
         Map<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_USERFID, userDetails.getId());
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
+        claims.put(CLAIM_KEY_ROLEID, userDetails.getRoleId());
         claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
@@ -172,9 +173,8 @@ public class JwtTokenUtil implements Serializable {
         final String username = getUsernameFromToken(token);
         final Date created = getCreatedDateFromToken(token);
         //final Date expiration = getExpirationDateFromToken(token);
-        return (
-                username.equals(user.getUsername())
-                && !isTokenExpired(token)
-                && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
+        return username.equals(user.getUsername())
+       && !isTokenExpired(token)
+       && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate());
     }
 }

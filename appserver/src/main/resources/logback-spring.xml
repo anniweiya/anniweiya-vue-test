@@ -86,6 +86,8 @@
     <appender-ref ref="ERROR_FILE"/>
     <appender-ref ref="ALL_FILE"/>
   </appender>
+
+  <logger name="cn.anniweiya.system.mapper" level="DEBUG"/>
   <root level="INFO">
     <appender-ref ref="STDOUT"/>
     <appender-ref ref="INFO_FILE"/>

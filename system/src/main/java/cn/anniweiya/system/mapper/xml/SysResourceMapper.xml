@@ -66,18 +66,30 @@
     <result column="name" property="name"/>
     <result column="icon" property="icon"/>
     <result column="routeUrl" property="routeUrl"/>
-    <collection column="fid" property="children" select="queryResourceListChildren"/>
+    <collection column="{fparentId=fid, userId=userId}" property="children" select="queryResourceList"/>
   </resultMap>
 
 
-  <select id="queryResourceList" resultMap="sysResourcePO" parameterType="java.lang.Integer">
-    SELECT sr.fname name, sr.fparent_id fparentId, sr.fid, sr.ficon icon, sr.froute_url routeUrl
-     from sys_resource sr where sr.fparent_id = 0
+  <select id="queryResourceList" resultMap="sysResourcePO" parameterType="java.util.Map">
+    SELECT
+    sr.fname      name,
+    sr.fparent_id fparentId,
+    sr.fid,
+    sr.ficon      icon,
+    sr.froute_url routeUrl,
+    #{userId} userId
+    FROM sys_resource sr
+    INNER JOIN sys_role_resource srs ON srs.fresource_id = sr.fid
+    INNER JOIN sys_user_role sur ON sur.fuser_id = #{userId}
+    INNER JOIN sys_role sr2 ON sr2.fid = srs.frole_id AND sr2.fid = sur.frole_id
+    where
+    <if test="fparentId == null ">
+      sr.fparent_id = 0
+    </if>
+    <if test="fparentId != null">
+      sr.fparent_id = #{fparentId}
+    </if>
   </select>
 
-  <select id="queryResourceListChildren" resultMap="sysResourcePO" parameterType="java.lang.Integer">
-      SELECT sr.fname name, sr.fparent_id fparentId, sr.fid, sr.ficon icon, sr.froute_url routeUrl
-     from sys_resource sr where sr.fparent_id = #{fparentId}
-  </select>
 
 </mapper>

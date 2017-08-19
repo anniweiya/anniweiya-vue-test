@@ -1,9 +1,9 @@
 package cn.anniweiya.appserver.security.controller;
 
 import cn.anniweiya.appserver.security.JwtAuthenticationRequest;
-import cn.anniweiya.appserver.security.JwtTokenUtil;
-import cn.anniweiya.appserver.security.JwtUser;
 import cn.anniweiya.appserver.security.service.JwtAuthenticationResponse;
+import cn.anniweiya.common.jwt.JwtTokenUtil;
+import cn.anniweiya.common.jwt.JwtUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

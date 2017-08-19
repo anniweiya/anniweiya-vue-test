@@ -3,6 +3,7 @@ package cn.anniweiya.system.mapper;
 import cn.anniweiya.system.entity.SysUser;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
  * @author anniweiya
  * @since 2017-05-29
  */
+@Component("sysUserMapper")
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**

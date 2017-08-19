@@ -1,5 +1,7 @@
 package cn.anniweiya.system.controller;
 
+import cn.anniweiya.common.util.http.ResponseMessage;
+import cn.anniweiya.common.util.http.Result;
 import cn.anniweiya.system.entity.SysResource;
 import cn.anniweiya.system.po.SysResourcePO;
 import cn.anniweiya.system.service.ISysResourceService;
@@ -8,7 +10,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,47 +34,47 @@ import java.util.List;
 @Slf4j
 public class SysResourceController {
 
-
     @Resource
     private ISysResourceService sysResourceService;
+
 
     @PostMapping(value = "/index")
     @ApiOperation("test for index")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "hello", value = "hello", dataType = "String")
     })
-    public ResponseEntity index(String hello) {
-        return ResponseEntity.ok("hello from server, 200 ");
+    public ResponseMessage<String> index(String hello) {
+        return Result.success("hello from server, 200 ");
     }
 
     @PreAuthorize("hasPermission(#hello, 'sys:user:select')")
     @PostMapping(value = "/hasPermission1")
-    public ResponseEntity hasPermission1(String hello) {
-        return ResponseEntity.ok("hello from server, test has permission 1");
+    public ResponseMessage<String> hasPermission1(String hello) {
+        return Result.success("hello from server, test has permission 1");
     }
 
     @PreAuthorize("hasPermission(#hello, 'hello', 'sys:user:select')")
     @PostMapping(value = "/hasPermission2")
-    public ResponseEntity hasPermission2(String hello) {
-        return ResponseEntity.ok("hello from server, test has permission 2");
+    public ResponseMessage<String> hasPermission2(String hello) {
+        return Result.success("hello from server, test has permission 2");
     }
 
     @PostMapping(value = "/testTransactional")
-    public ResponseEntity<String> testTransactional(String hello) {
+    public ResponseMessage<String> testTransactional(String hello) {
         SysResource sysResource = new SysResource();
         sysResource.setFname("test");
         sysResource.setFcode("test");
         sysResource.setFisDelete(0);
         sysResource.setFcreateTime(new Date());
         sysResourceService.insertSysResource(sysResource);
-        return ResponseEntity.ok("hello from server, 200 ");
+        return Result.success("hello from server, 200 ");
     }
 
     @RequestMapping("/queryResourceList")
     @ResponseBody
-    public ResponseEntity<List<SysResourcePO>> testSysResource() {
+    public ResponseMessage<List<SysResourcePO>> testSysResource() {
         List<SysResourcePO> resourceList = sysResourceService.queryResourceList();
         log.info(resourceList.toString());
-        return ResponseEntity.ok(resourceList);
+        return Result.success(resourceList);
     }
 }
