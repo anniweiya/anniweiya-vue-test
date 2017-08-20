@@ -1,8 +1,8 @@
 /*
-SQLyog Professional v12.09 (64 bit)
-MySQL - 5.7.18 : Database - test
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.7.19 : Database - test
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -38,11 +38,11 @@ CREATE TABLE `sys_resource` (
   `fis_delete` tinyint(1) DEFAULT '0',
   `fext` text,
   PRIMARY KEY (`fid`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_resource` */
 
-insert  into `sys_resource`(`fid`,`fparent_id`,`fname`,`fcode`,`fpermission_code`,`ftype`,`ficon`,`froute_url`,`forder`,`fsystem_id`,`fcreator`,`fcreate_time`,`fupdator`,`fupdate_time`,`fis_delete`,`fext`) values (1,0,'系统管理','system_manage','sys',1,NULL,'/system','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(2,1,'用户管理','system_user_maneage','sys:user',1,NULL,'/system/user','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(3,2,'用户管理-新增','system_user_manage_add','sys:user:select,sys:user:add',2,NULL,'/system/user/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(4,2,'用户管理-删除','system_user_manage_delete','sys:user:select,sys:user:delete',2,NULL,'/system/user/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(5,2,'用户管理-修改','system_user_manage_update','sys:user:select,sys:user:update',2,NULL,'/system/user/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(6,2,'用户管理-查看','system_user_manage_select','sys:user:select',2,NULL,'/system/user/select','4',NULL,NULL,NULL,NULL,NULL,0,NULL),(7,1,'角色管理','system_role_manage','sys:role',1,NULL,'/system/role','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(8,7,'角色管理-新增','system_role_add','sys:role:select,sys:role:add',2,NULL,'/system/role/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(9,7,'角色管理-删除','system_role_delete','sys:role:select,sys:role:delete',2,NULL,'/system/role/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(10,7,'角色管理-修改','system_role_update','sys:role:select,sys:role:update',2,NULL,'/system/role/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(11,7,'角色管理-查看','system_role_select','sys:role:select',2,NULL,'/system/role/update','4',NULL,NULL,NULL,NULL,NULL,0,NULL),(12,0,'文件管理','file_manage','file',1,NULL,'/file','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(13,12,'文件管理-增加','file_manage_add','file:view,file:add',2,NULL,'/file/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(14,12,'文件管理-删除','file_manage_delete','file:view,file:delete',2,NULL,'/file/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(15,12,'文件管理-修改','file_manage_update','file:view,file:update',2,NULL,'/file/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(16,12,'文件管理-查看','file_manage_view','file:view',2,NULL,'/file/view','4',NULL,NULL,NULL,NULL,NULL,0,NULL);
+insert  into `sys_resource`(`fid`,`fparent_id`,`fname`,`fcode`,`fpermission_code`,`ftype`,`ficon`,`froute_url`,`forder`,`fsystem_id`,`fcreator`,`fcreate_time`,`fupdator`,`fupdate_time`,`fis_delete`,`fext`) values (1,0,'系统管理','system_manage','sys',1,'el-icon-setting','/system','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(2,1,'用户管理','system_user_maneage','sys:user',1,'el-icon-edit','/system/user','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(3,2,'用户管理-新增','system_user_manage_add','sys:user:select,sys:user:add',2,NULL,'/system/user/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(4,2,'用户管理-删除','system_user_manage_delete','sys:user:select,sys:user:delete',2,NULL,'/system/user/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(5,2,'用户管理-修改','system_user_manage_update','sys:user:select,sys:user:update',2,'el-icon-edit','/system/user/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(6,2,'用户管理-查看','system_user_manage_select','sys:user:select',2,NULL,'/system/user/select','4',NULL,NULL,NULL,NULL,NULL,0,NULL),(7,1,'角色管理','system_role_manage','sys:role',1,'el-icon-edit','/system/role','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(8,7,'角色管理-新增','system_role_add','sys:role:select,sys:role:add',2,NULL,'/system/role/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(9,7,'角色管理-删除','system_role_delete','sys:role:select,sys:role:delete',2,NULL,'/system/role/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(10,7,'角色管理-修改','system_role_update','sys:role:select,sys:role:update',2,'el-icon-edit','/system/role/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(11,7,'角色管理-查看','system_role_select','sys:role:select',2,NULL,'/system/role/update','4',NULL,NULL,NULL,NULL,NULL,0,NULL),(12,0,'文件管理','file_manage','file',1,'el-icon-document\n','/file','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(13,12,'文件管理-增加','file_manage_add','file:view,file:add',2,NULL,'/file/add','1',NULL,NULL,NULL,NULL,NULL,0,NULL),(14,12,'文件管理-删除','file_manage_delete','file:view,file:delete',2,NULL,'/file/delete','2',NULL,NULL,NULL,NULL,NULL,0,NULL),(15,12,'文件管理-修改','file_manage_update','file:view,file:update',2,'el-icon-edit','/file/update','3',NULL,NULL,NULL,NULL,NULL,0,NULL),(16,12,'文件管理-查看','file_manage_view','file:view',2,NULL,'/file/view','4',NULL,NULL,NULL,NULL,NULL,0,NULL),(17,0,'test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-08-18',NULL,NULL,0,NULL),(18,0,'test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-08-18',NULL,NULL,0,NULL),(19,0,'test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-08-18',NULL,NULL,0,NULL),(20,0,'test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-08-18',NULL,NULL,0,NULL),(21,0,'test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-08-18',NULL,NULL,0,NULL);
 
 /*Table structure for table `sys_role` */
 
@@ -84,7 +84,7 @@ CREATE TABLE `sys_role_resource` (
 
 /*Data for the table `sys_role_resource` */
 
-insert  into `sys_role_resource`(`fid`,`frole_id`,`fresource_id`,`fcreator`,`fcreate_time`,`fupdator`,`fupdate_time`,`fis_delete`,`fext`) values (1,1,1,NULL,NULL,NULL,NULL,0,NULL),(2,1,2,NULL,NULL,NULL,NULL,0,NULL),(3,1,3,NULL,NULL,NULL,NULL,0,NULL),(4,1,4,NULL,NULL,NULL,NULL,0,NULL),(5,1,5,NULL,NULL,NULL,NULL,0,NULL),(6,1,6,NULL,NULL,NULL,NULL,0,NULL),(7,1,7,NULL,NULL,NULL,NULL,0,NULL),(8,1,8,NULL,NULL,NULL,NULL,0,NULL),(9,1,9,NULL,NULL,NULL,NULL,0,NULL),(10,1,10,NULL,NULL,NULL,NULL,0,NULL),(11,1,11,NULL,NULL,NULL,NULL,0,NULL),(12,1,12,NULL,NULL,NULL,NULL,0,NULL);
+insert  into `sys_role_resource`(`fid`,`frole_id`,`fresource_id`,`fcreator`,`fcreate_time`,`fupdator`,`fupdate_time`,`fis_delete`,`fext`) values (1,1,1,NULL,NULL,NULL,NULL,0,NULL),(2,1,2,NULL,NULL,NULL,NULL,0,NULL),(3,1,3,NULL,NULL,NULL,NULL,0,NULL),(4,1,4,NULL,NULL,NULL,NULL,0,NULL),(5,1,5,NULL,NULL,NULL,NULL,0,NULL),(6,1,6,NULL,NULL,NULL,NULL,0,NULL),(7,1,7,NULL,NULL,NULL,NULL,0,NULL),(8,1,8,NULL,NULL,NULL,NULL,0,NULL),(9,1,9,NULL,NULL,NULL,NULL,0,NULL),(10,1,10,NULL,NULL,NULL,NULL,0,NULL),(11,1,11,NULL,NULL,NULL,NULL,0,NULL),(12,2,12,NULL,NULL,NULL,NULL,0,NULL);
 
 /*Table structure for table `sys_user` */
 
@@ -127,11 +127,11 @@ CREATE TABLE `sys_user_role` (
   `fis_delete` tinyint(1) NOT NULL DEFAULT '0',
   `fext` text,
   PRIMARY KEY (`fid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_user_role` */
 
-insert  into `sys_user_role`(`fid`,`fuser_id`,`frole_id`,`fupdate_time`,`fupdator`,`fcreate_time`,`fcreator`,`fis_delete`,`fext`) values (1,1,1,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(2,2,2,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(3,3,2,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(4,2,1,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL);
+insert  into `sys_user_role`(`fid`,`fuser_id`,`frole_id`,`fupdate_time`,`fupdator`,`fcreate_time`,`fcreator`,`fis_delete`,`fext`) values (1,1,1,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(2,2,2,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(3,3,2,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(4,2,1,'2017-05-29',NULL,'2017-05-29',NULL,0,NULL),(5,1,2,'2017-08-19',NULL,'2017-08-19',NULL,0,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
