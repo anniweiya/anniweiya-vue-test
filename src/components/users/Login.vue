@@ -49,6 +49,9 @@
     API_TESTPERMISSION1,
     API_TESTPERMISSION2
   } from '@/js/http/api'
+
+
+
   export default {
     components: {},
     data(){
@@ -76,7 +79,8 @@
     },
     methods: {
       clear(){
-        Lockr.set('token')
+        Lockr.set('token');
+        window.location.reload();
       },
       handleSubmit(form){
         let data = {}
@@ -86,8 +90,9 @@
           bus.$message({message: res.token});
           console.info(res)
           Lockr.set('token', res.token)
-          console.log(Lockr.get('token'))
-        })
+          console.log("test for getting the token. token: " + Lockr.get('token'))
+          window.location.reload();
+        });
       },
       getUser(){
         this.apiPost(API_GETUSER, {}).then((res) => {

@@ -2,7 +2,7 @@
  * Created by anniweiya on 6/13/17.
  */
 
-let baseUrl = 'http://ian1:8080';
+let baseUrl = 'http://192.168.0.71:8080';
 
 export const API_AUTH = baseUrl + '/auth';
 export const API_GETUSER= baseUrl + '/user';
