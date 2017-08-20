@@ -3,9 +3,11 @@ import {GET_RESOURCE} from '@/vuex/mutations_types'
 
 
 export default {
-  // async loadResourceList({commit}){
-  //   let res = await getResource();
-  //   console.info("getResource result:" + res);
-  //   commit(GET_RESOURCE, res)
-  // },
+  async loadResourceList({commit}){
+    let res = await getResource();
+    commit(GET_RESOURCE, res)
+  },
+  emptyResourceList({commit}) {
+    commit(GET_RESOURCE, []);
+  }
 }

@@ -1,4 +1,4 @@
 
 export default {
-  // resourceList: state => state.resourceList,
+  resourceList: state => state.resourceList,
 }

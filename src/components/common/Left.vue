@@ -10,7 +10,7 @@
 </template>
 
 <script>
-//  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
   import LeftResourceComponent from '@/components/common/LeftResource.vue'
   import {getResource} from '@/service/getData'
 
@@ -24,30 +24,22 @@
     },
     data() {
       return {
-        resourceList:[]
       }
     },
     methods: {
-//      ...mapActions({
-//        load: 'loadResourceList'
-//      })
-      async load(){
-        console.info("load");
-        let res = await getResource();
-        this.resourceList = res;
-        console.info("getResource result:" + res);
-      }
+      ...mapActions({
+        load: 'loadResourceList'
+      }),
     },
     created: function () {
-      this.load();
     },
     computed: {
       onRoutes(){
         return this.$route.path;
       },
-//      ...mapGetters([
-//        'resourceList'
-//      ])
+      ...mapGetters([
+        'resourceList'
+      ])
     }
   }
 </script>

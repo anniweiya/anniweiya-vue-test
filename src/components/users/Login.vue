@@ -49,12 +49,12 @@
     API_TESTPERMISSION1,
     API_TESTPERMISSION2
   } from '@/js/http/api'
-
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
 
 
   export default {
     components: {},
-    data(){
+    data() {
       return {
         title: '',
         loading: false,
@@ -78,43 +78,45 @@
       }
     },
     methods: {
-      clear(){
+      clear() {
         Lockr.set('token');
-        window.location.reload();
+        this.emptyResource();
       },
-      handleSubmit(form){
+      handleSubmit(form) {
         let data = {}
         data.username = this.form.username
         data.password = this.form.password
         this.apiPost(API_AUTH, data).then((res) => {
           bus.$message({message: res.token});
-          console.info(res)
           Lockr.set('token', res.token)
-          console.log("test for getting the token. token: " + Lockr.get('token'))
-          window.location.reload();
+          this.loadResource();
         });
       },
-      getUser(){
+      ...mapActions({
+        loadResource: 'loadResourceList',
+        emptyResource: 'emptyResourceList'
+      }),
+      getUser() {
         this.apiPost(API_GETUSER, {}).then((res) => {
           bus.$message({message: res});
         })
       },
-      testRole(){
+      testRole() {
         this.apiGet(API_TESTROLE, {}).then((res) => {
           bus.$message({message: res});
         })
       },
-      testSysResource(){
+      testSysResource() {
         this.apiGet(API_TESTSYSRESOURCE, {}).then((res) => {
           bus.$message({message: res});
         })
       },
-      testPermission1(){
+      testPermission1() {
         this.apiPost(API_TESTPERMISSION1, {hello: "hello"}).then((res) => {
           bus.$message({message: res});
         })
       },
-      testPermission2(){
+      testPermission2() {
         this.apiPost(API_TESTPERMISSION2, {hello: "hello"}).then((res) => {
           bus.$message({message: res});
         })

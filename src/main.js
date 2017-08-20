@@ -11,10 +11,24 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 // import _g from './assets/js/global'
 import router from './router'
+
 axios.defaults.baseURL = ""
 axios.defaults.timeout = 1000 * 15
 axios.defaults.headers['Authorization'] = Lockr.get('token')
 axios.defaults.headers['Content-Type'] = 'application/json'
+
+axios.interceptors.request.use(
+  config => {
+    if (Lockr.get('token')) {
+      config.headers.Authorization = Lockr.get('token')
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
+
 
 Vue.use(ElementUI)
 
