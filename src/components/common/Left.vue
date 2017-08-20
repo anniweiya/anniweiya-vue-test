@@ -1,12 +1,11 @@
 <template>
-  <div class="left">
-    <el-menu :default-active="onRoutes" router>
+  <div style="height: 100%" v-if="resourceList && resourceList.length > 0">
+    <el-menu class="el-menu-vertical" style="height: 100%" :default-active="onRoutes" router :collapse="isCollapse">
       <template v-for="item in resourceList">
         <left-resource-component :param="item"></left-resource-component>
       </template>
     </el-menu>
   </div>
-
 </template>
 
 <script>
@@ -24,6 +23,7 @@
     },
     data() {
       return {
+        isCollapse: false
       }
     },
     methods: {
@@ -32,6 +32,7 @@
       }),
     },
     created: function () {
+      this.load();
     },
     computed: {
       onRoutes(){
@@ -45,11 +46,14 @@
 </script>
 
 <style>
-  .left {
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
+  /*.left {*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: auto;*/
+    /*-webkit-overflow-scrolling: touch;*/
+    /*-ms-overflow-style: none;*/
+  /*}*/
+  .el-menu-vertical:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
   }
-
 </style>

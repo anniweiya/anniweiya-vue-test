@@ -3,13 +3,13 @@
     <el-menu theme="dark" mode="horizontal" class="menu" @select="handleSelect">
       <el-row  type="flex" justify="space-between">
         <el-col :xs="8" :sm="6" :md="3">
-          <el-menu-item index=""> {{ username }} </el-menu-item>
+          <el-menu-item index="" disabled="" route=""> {{ username }} </el-menu-item>
         </el-col>
         <el-col >
-          <el-menu-item index="/login"> hello </el-menu-item>
+          <el-menu-item index="/login" disabled="" route=""> hello </el-menu-item>
         </el-col>
         <el-col>
-          <el-menu-item index="">quit</el-menu-item>
+          <el-menu-item v-on:click="quit" index="" disabled="" route="">quit</el-menu-item>
         </el-col>
       </el-row>
     </el-menu>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
+
   export default {
     components: {},
     data() {
@@ -29,9 +31,18 @@
     },
     methods: {
       handleSelect(key){
-        console.info(key)
         this.$router.push({path: key});
-      }
+      },
+      quit() {
+        this.clear();
+      },
+      clear() {
+        Lockr.set('token');
+        this.emptyResource();
+      },
+      ...mapActions({
+        emptyResource: 'emptyResourceList'
+      }),
     }
   }
 </script>

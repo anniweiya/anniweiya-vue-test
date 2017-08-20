@@ -8,32 +8,7 @@
       <el-input type="text" v-model="form.password" auto-complete="off" placeholder="password"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="clear()">clear </el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="handleSubmit('form')">submit
-      </el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="getUser()">getUser</el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="testRole()">testRole
-      </el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="testSysResource()">
-        testSysResource
-      </el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="testPermission1()">
-        testPermission1
-      </el-button>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" v-loading="loading" @click.native.prevent="testPermission2()">
-        testPermission2
+      <el-button type="primary" v-loading="loading" @click.native.prevent="handleSubmit('form')">login
       </el-button>
     </el-form-item>
   </el-form>
@@ -43,11 +18,6 @@
   import http from '@/js/http/http'
   import {
     API_AUTH,
-    API_GETUSER,
-    API_TESTROLE,
-    API_TESTSYSRESOURCE,
-    API_TESTPERMISSION1,
-    API_TESTPERMISSION2
   } from '@/js/http/api'
   import {mapGetters, mapActions, mapMutations} from 'vuex'
 
@@ -78,10 +48,6 @@
       }
     },
     methods: {
-      clear() {
-        Lockr.set('token');
-        this.emptyResource();
-      },
       handleSubmit(form) {
         let data = {}
         data.username = this.form.username
@@ -96,32 +62,6 @@
         loadResource: 'loadResourceList',
         emptyResource: 'emptyResourceList'
       }),
-      getUser() {
-        this.apiPost(API_GETUSER, {}).then((res) => {
-          bus.$message({message: res});
-        })
-      },
-      testRole() {
-        this.apiGet(API_TESTROLE, {}).then((res) => {
-          bus.$message({message: res});
-        })
-      },
-      testSysResource() {
-        this.apiGet(API_TESTSYSRESOURCE, {}).then((res) => {
-          bus.$message({message: res});
-        })
-      },
-      testPermission1() {
-        this.apiPost(API_TESTPERMISSION1, {hello: "hello"}).then((res) => {
-          bus.$message({message: res});
-        })
-      },
-      testPermission2() {
-        this.apiPost(API_TESTPERMISSION2, {hello: "hello"}).then((res) => {
-          bus.$message({message: res});
-        })
-      }
-
     },
     mixins: [http]
   }

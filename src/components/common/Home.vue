@@ -1,24 +1,23 @@
 <template>
-  <div>
+  <div style="height: 100%; overflow: hidden">
     <header-component></header-component>
     <div class="content">
-      <el-row>
-        <el-col :xs="8" :sm="6" :md="3">
-          <left-component></left-component>
-        </el-col>
-        <el-col :xs="16" :sm="18" :md="21">
-          <div class="route">
-            <router-view></router-view>
-          </div>
-        </el-col>
-      </el-row>
+      <div style="display: inline-block; vertical-align: top; height: 100%">
+        <left-component></left-component>
+      </div>
+      <div style="display: inline-block; padding: 2em">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
   import HeaderComponent from '@/components/common/Header.vue'
   import LeftComponent from '@/components/common/Left.vue'
+
+
   export default {
     components: {
       HeaderComponent,
@@ -27,16 +26,18 @@
     data() {
       return {}
     },
-    methods: {}
+    methods: {
+      ...mapGetters([
+        'resourceList'
+      ])
+    }
   }
 </script>
 
 <style>
   .content {
     z-index: 1;
-    overflow-x: hidden;
-  }
-  .route{
-    padding: 1em;
+    overflow-y: hidden;
+    height: 100%;
   }
 </style>
