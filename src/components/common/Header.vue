@@ -3,13 +3,13 @@
     <el-menu theme="dark" mode="horizontal" class="menu" @select="handleSelect">
       <el-row  type="flex" justify="space-between">
         <el-col :xs="8" :sm="6" :md="3">
-          <el-menu-item index="logo"> {{ username }} </el-menu-item>
+          <el-menu-item index=""> {{ username }} </el-menu-item>
         </el-col>
         <el-col >
-          <el-menu-item index="handle"> hello </el-menu-item>
+          <el-menu-item index="/login"> hello </el-menu-item>
         </el-col>
         <el-col>
-          <el-menu-item index="quit">quit</el-menu-item>
+          <el-menu-item index="">quit</el-menu-item>
         </el-col>
       </el-row>
     </el-menu>
@@ -30,6 +30,7 @@
     methods: {
       handleSelect(key){
         console.info(key)
+        this.$router.push({path: key});
       }
     }
   }
