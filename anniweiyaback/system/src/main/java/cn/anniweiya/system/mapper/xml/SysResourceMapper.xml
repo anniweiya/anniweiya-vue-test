@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.anniweiya.system.mapper.SysResourceMapper">
+
+
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="cn.anniweiya.system.entity.SysResource">
+    <id column="fid" property="fid"/>
+    <result column="fparent_id" property="fparentId"/>
+    <result column="fname" property="fname"/>
+    <result column="fcode" property="fcode"/>
+    <result column="fpermission_code" property="fpermissionCode"/>
+    <result column="ftype" property="ftype"/>
+    <result column="ficon" property="ficon"/>
+    <result column="froute_url" property="frouteUrl"/>
+    <result column="forder" property="forder"/>
+    <result column="fsystem_id" property="fsystemId"/>
+    <result column="fcreator" property="fcreator"/>
+    <result column="fcreate_time" property="fcreateTime"/>
+    <result column="fupdator" property="fupdator"/>
+    <result column="fupdate_time" property="fupdateTime"/>
+    <result column="fis_delete" property="fisDelete"/>
+    <result column="fext" property="fext"/>
+  </resultMap>
+
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+    fid, fparent_id AS fparentId, fname, fcode, fpermission_code AS fpermissionCode, ftype, ficon, froute_url AS
+    frouteUrl, forder, fsystem_id AS fsystemId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time AS
+    fupdateTime, fis_delete AS fisDelete, fext
+  </sql>
+
+
+  <sql id="Base_Sql">
+    ${alias}.fid as fid
+    ,${alias}.fparent_id as fparentId
+    ,${alias}.fname as fname
+    ,${alias}.fcode as fcode
+    ,${alias}.fpermission_code as fpermissionCode
+    ,${alias}.ftype as ftype
+    ,${alias}.ficon as ficon
+    ,${alias}.froute_url as frouteUrl
+    ,${alias}.forder as forder
+    ,${alias}.fsystem_id as fsystemId
+    ,${alias}.fcreator as fcreator
+    ,${alias}.fcreate_time as fcreateTime
+    ,${alias}.fupdator as fupdator
+    ,${alias}.fupdate_time as fupdateTime
+    ,${alias}.fis_delete as fisDelete
+    ,${alias}.fext as fext
+  </sql>
+
+  <select id="queryPermissionCode" resultType="java.lang.String" parameterType="java.lang.Integer">
+    select fpermission_code as fpermissionCode from
+    sys_resource srs
+      INNER JOIN
+    sys_role_resource srr ON srs.fid = srr.fresource_id
+    AND srr.frole_id = #{roleId}
+    WHERE srs.fis_delete = 0 AND srr.fis_delete = 0
+  </select>
+
+
+  <resultMap id="sysResourcePO" type="cn.anniweiya.system.po.SysResourcePO">
+    <id column="fid" property="fid"/>
+    <result column="fparentId" property="fparentId"/>
+    <result column="name" property="name"/>
+    <result column="icon" property="icon"/>
+    <result column="routeUrl" property="routeUrl"/>
+    <collection column="{fparentId=fid, userId=userId}" property="children" select="queryResourceList"/>
+  </resultMap>
+
+
+  <select id="queryResourceList" resultMap="sysResourcePO" parameterType="java.util.Map">
+    SELECT
+    sr.fname      name,
+    sr.fparent_id fparentId,
+    sr.fid,
+    sr.ficon      icon,
+    sr.froute_url routeUrl,
+    #{userId} userId
+    FROM sys_resource sr
+    INNER JOIN sys_role_resource srs ON srs.fresource_id = sr.fid
+    INNER JOIN sys_user_role sur ON sur.fuser_id = #{userId}
+    INNER JOIN sys_role sr2 ON sr2.fid = srs.frole_id AND sr2.fid = sur.frole_id
+    where
+    <if test="fparentId == null ">
+      sr.fparent_id = 0
+    </if>
+    <if test="fparentId != null">
+      sr.fparent_id = #{fparentId}
+    </if>
+  </select>
+
+
+</mapper>
