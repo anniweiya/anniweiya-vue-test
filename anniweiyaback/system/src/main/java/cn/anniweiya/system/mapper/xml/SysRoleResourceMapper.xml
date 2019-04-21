@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.anniweiya.system.mapper.SysRoleResourceMapper">
+
+
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="cn.anniweiya.system.entity.SysRoleResource">
+    <id column="fid" property="fid"/>
+    <result column="frole_id" property="froleId"/>
+    <result column="fresource_id" property="fresourceId"/>
+    <result column="fcreator" property="fcreator"/>
+    <result column="fcreate_time" property="fcreateTime"/>
+    <result column="fupdator" property="fupdator"/>
+    <result column="fupdate_time" property="fupdateTime"/>
+    <result column="fis_delete" property="fisDelete"/>
+    <result column="fext" property="fext"/>
+  </resultMap>
+
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+    fid, frole_id AS froleId, fresource_id AS fresourceId, fcreator, fcreate_time AS fcreateTime, fupdator, fupdate_time
+    AS fupdateTime, fis_delete AS fisDelete, fext
+  </sql>
+
+
+  <sql id="Base_Sql">
+    ${alias}.fid as fid
+    ,${alias}.frole_id as froleId
+    ,${alias}.fresource_id as fresourceId
+    ,${alias}.fcreator as fcreator
+    ,${alias}.fcreate_time as fcreateTime
+    ,${alias}.fupdator as fupdator
+    ,${alias}.fupdate_time as fupdateTime
+    ,${alias}.fis_delete as fisDelete
+    ,${alias}.fext as fext
+  </sql>
+</mapper>
